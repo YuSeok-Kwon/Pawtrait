@@ -1,0 +1,38 @@
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 40px 20px;
+  margin-top: 40px;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.footerLogo h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.footerLogo p {
+  font-size: 14px;
+  color: #ccc;
+  margin: 0;
+}
+
+.footerInfo {
+  text-align: right;
+}
+
+.footerInfo p {
+  font-size: 14px;
+  color: #ccc;
+  margin: 4px 0;
+}

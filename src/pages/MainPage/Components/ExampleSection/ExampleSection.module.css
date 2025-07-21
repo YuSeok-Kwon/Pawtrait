@@ -1,0 +1,51 @@
+.exampleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 15px;
+  background-color: #fff;
+}
+
+.exampleContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 90%;
+  width: 100%;
+  margin: 40px 0;
+}
+
+.exampleDiv {
+  padding-top: 20px;
+}
+
+.subTitle {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+  max-width: 1100px;
+  padding-top: 15px;
+}
+
+.exampleContent div {
+  display: flex;
+}
+
+.exampleImg {
+  width: 350px;
+  height: auto;
+  aspect-ratio: 4/3;
+  margin: 0 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  object-fit: fill;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.exampleImg:hover {
+  transform: translateY(-5px);
+}

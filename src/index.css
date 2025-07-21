@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.activeBtn {
+  background-color: #47b5eb;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 12px;
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-weight: 700;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.activeBtn:hover {
+  background-color: #3a9bc1;
+}

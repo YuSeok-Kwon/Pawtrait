@@ -1,0 +1,226 @@
+.resultPage {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.resultContent {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.photoSection {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.photoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.uploadedPhoto {
+  max-width: 400px;
+  max-height: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.analysisSection {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.emotionResult {
+  display: flex;
+  justify-content: center;
+}
+
+.emotionCard {
+  text-align: center;
+  padding: 30px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #47b5eb 0%, #3a9bc1 100%);
+  color: white;
+  max-width: 300px;
+  width: 100%;
+}
+
+.emotionIcon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.emotionName {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.emotionScore {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.emotionDescription {
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.portraitSection {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.portraitContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.portraitImage {
+  max-width: 400px;
+  max-height: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.actionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.styleSelection {
+  width: 100%;
+  max-width: 600px;
+}
+
+.styleTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.styleOptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.styleOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.styleOption:hover {
+  border-color: #47b5eb;
+  background: #f8f9ff;
+  transform: translateY(-2px);
+}
+
+.styleOption.selected {
+  border-color: #47b5eb;
+  background: linear-gradient(135deg, #47b5eb 0%, #3a9bc1 100%);
+  color: white;
+}
+
+.styleOption span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.downloadSection {
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.backButton,
+.homeButton {
+  padding: 12px 24px;
+  border: 2px solid #47b5eb;
+  background: white;
+  color: #47b5eb;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover,
+.homeButton:hover {
+  background: #47b5eb;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .resultContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 30px;
+  }
+
+  .portraitSection {
+    grid-column: 1 / -1;
+  }
+}
