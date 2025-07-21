@@ -42,3 +42,6 @@ backup/
 
 # TypeScript
 *.tsbuildinfo
+
+# docs
+docs/

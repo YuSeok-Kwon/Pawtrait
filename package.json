@@ -12,7 +12,15 @@
     "install:all": "npm install && cd client && npm install && cd ../server && npm install",
     "type-check": "npm run type-check:client && npm run type-check:server",
     "type-check:client": "cd client && npm run type-check",
-    "type-check:server": "cd server && npm run type-check"
+    "type-check:server": "cd server && npm run type-check",
+    "lint": "npm run lint:client && npm run lint:server",
+    "lint:client": "cd client && npm run lint",
+    "lint:server": "cd server && npm run lint",
+    "lint:fix": "npm run lint:fix:client && npm run lint:fix:server",
+    "lint:fix:client": "cd client && npm run lint:fix",
+    "lint:fix:server": "cd server && npm run lint:fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [
     "pet",
@@ -25,6 +33,12 @@
   "license": "ISC",
   "description": "Pawtrait - Pet Style Conversion App with Client-Server Architecture",
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "concurrently": "^7.6.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "prettier": "^3.6.2"
   }
 }

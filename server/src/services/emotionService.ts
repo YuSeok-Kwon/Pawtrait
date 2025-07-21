@@ -1,8 +1,9 @@
-import axios from 'axios';
+// import axios from 'axios'; // 나중에 실제 API 연결시 사용할 예정
 
 // 반려동물 감정 분석 서비스
 class EmotionService {
-  private apiUrl = 'https://api-inference.huggingface.co/models/nateraw/visual-emotion';
+  private apiUrl =
+    'https://api-inference.huggingface.co/models/nateraw/visual-emotion';
   private apiToken = process.env.HUGGINGFACE_API_TOKEN;
 
   // 이미지에서 반려동물 감정 분석하기
@@ -13,7 +14,6 @@ class EmotionService {
       // 나중에 실제 AI API 연결할 예정
       // 지금은 임시로 '행복' 감정 반환
       return 'happy';
-      
     } catch (error) {
       console.error('감정 분석 실패:', error);
       // 에러가 나면 기본값으로 '중립' 반환

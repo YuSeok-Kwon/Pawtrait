@@ -7,9 +7,9 @@ export const uploadImage = async (req: Request, res: Response) => {
   try {
     // 파일이 없으면 에러
     if (!req.file) {
-      return res.status(400).json({ 
-        success: false, 
-        error: '이미지 파일이 없습니다' 
+      return res.status(400).json({
+        success: false,
+        error: '이미지 파일이 없습니다',
       });
     }
 
@@ -26,9 +26,9 @@ export const uploadImage = async (req: Request, res: Response) => {
     res.json({ success: true, data: imageInfo });
   } catch (error) {
     console.error('업로드 에러:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: '업로드에 실패했습니다' 
+    res.status(500).json({
+      success: false,
+      error: '업로드에 실패했습니다',
     });
   }
 };
@@ -40,9 +40,13 @@ export const processImage = async (req: Request, res: Response) => {
 
     // 1단계: 반려동물 감정 분석하기
     const emotion = await emotionService.analyzeEmotion(imageId);
-    
+
     // 2단계: 지브리 스타일로 변환하기
-    const processedImage = await styleService.convertStyle(imageId, style, emotion);
+    const processedImage = await styleService.convertStyle(
+      imageId,
+      style,
+      emotion
+    );
 
     // 결과 보내기
     res.json({
@@ -56,9 +60,9 @@ export const processImage = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error('변환 에러:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: '이미지 변환에 실패했습니다' 
+    res.status(500).json({
+      success: false,
+      error: '이미지 변환에 실패했습니다',
     });
   }
 };
@@ -80,9 +84,9 @@ export const getImage = async (req: Request, res: Response) => {
     res.json({ success: true, data: imageInfo });
   } catch (error) {
     console.error('이미지 조회 에러:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: '이미지를 찾을 수 없습니다' 
+    res.status(500).json({
+      success: false,
+      error: '이미지를 찾을 수 없습니다',
     });
   }
 };

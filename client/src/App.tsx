@@ -8,13 +8,13 @@ import { SharePage } from './pages/SharePage';
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div className='app'>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/upload" element={<UploadPage />} />
-          <Route path="/makeImg" element={<MakeImgPage />} />
-          <Route path="/result" element={<ResultPage />} />
-          <Route path="/share" element={<SharePage />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/upload' element={<UploadPage />} />
+          <Route path='/makeImg' element={<MakeImgPage />} />
+          <Route path='/result' element={<ResultPage />} />
+          <Route path='/share' element={<SharePage />} />
         </Routes>
       </div>
     </Router>
