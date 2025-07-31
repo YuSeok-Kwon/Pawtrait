@@ -28,7 +28,7 @@
 }
 
 .logo:hover {
-  color: #47b5eb;
+  color: #E8D5B7;
 }
 
 .nav {
@@ -48,7 +48,7 @@
 }
 
 .activeBtn {
-  background-color: #47b5eb;
+  background-color: #E8D5B7;
   color: white;
   text-decoration: none;
   border: none;
@@ -61,5 +61,5 @@
 }
 
 .activeBtn:hover {
-  background-color: #3a9bc1;
+  background-color: #D4C3A3;
 }

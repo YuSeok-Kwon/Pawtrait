@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import css from './ResultPage.module.css';
 
-function ResultPage() {
+export default function ResultPage() {
   const navigate = useNavigate();
   const [selectedStyle, setSelectedStyle] = useState<string>('');
 
@@ -12,6 +12,16 @@ function ResultPage() {
     { id: 'picasso', name: '피카소' },
     { id: 'pokemon', name: '포켓몬' },
   ];
+
+  // 감정 데이터 - 실제로는 API에서 받아올 데이터
+  const emotionData = {
+    emotion: 'happy',
+    name: '행복',
+    icon: '😊',
+    score: 85,
+    description: '반려동물이 매우 행복하고 편안한 상태입니다.',
+    bgColor: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
+  };
 
   return (
     <>
@@ -24,7 +34,7 @@ function ResultPage() {
               <h2 className={css.sectionTitle}>업로드한 사진</h2>
               <div className={css.photoContainer}>
                 <img
-                  src='/api/placeholder/400/300'
+                  src='https://via.placeholder.com/400x300/f5f5f5/999?text=Uploaded+Photo'
                   alt='업로드된 반려동물 사진'
                   className={css.uploadedPhoto}
                 />
@@ -34,12 +44,15 @@ function ResultPage() {
             <div className={css.analysisSection}>
               <h2 className={css.sectionTitle}>감정 분석 결과</h2>
               <div className={css.emotionResult}>
-                <div className={css.emotionCard}>
-                  <div className={css.emotionIcon}>😊</div>
-                  <h3 className={css.emotionName}>행복</h3>
-                  <div className={css.emotionScore}>85%</div>
+                <div
+                  className={css.emotionCard}
+                  style={{ background: emotionData.bgColor }}
+                >
+                  <div className={css.emotionIcon}>{emotionData.icon}</div>
+                  <h3 className={css.emotionName}>{emotionData.name}</h3>
+                  <div className={css.emotionScore}>{emotionData.score}%</div>
                   <p className={css.emotionDescription}>
-                    반려동물이 매우 행복하고 편안한 상태입니다.
+                    {emotionData.description}
                   </p>
                 </div>
               </div>
@@ -49,7 +62,7 @@ function ResultPage() {
               <h2 className={css.sectionTitle}>AI 생성 초상화</h2>
               <div className={css.portraitContainer}>
                 <img
-                  src='/api/placeholder/400/400'
+                  src='https://via.placeholder.com/400x400/e8e8e8/666?text=AI+Portrait'
                   alt='AI 생성 반려동물 초상화'
                   className={css.portraitImage}
                 />
@@ -71,6 +84,19 @@ function ResultPage() {
                       </button>
                     ))}
                   </div>
+
+                  {selectedStyle && (
+                    <div className={css.transformButton}>
+                      <button
+                        className='activeBtn'
+                        onClick={() =>
+                          navigate(`/transform?style=${selectedStyle}`)
+                        }
+                      >
+                        선택한 스타일로 변환하기
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div className={css.downloadSection}>
@@ -96,5 +122,3 @@ function ResultPage() {
     </>
   );
 }
-
-export default ResultPage;

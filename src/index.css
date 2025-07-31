@@ -15,7 +15,7 @@ body {
 }
 
 .activeBtn {
-  background-color: #47b5eb;
+  background-color: #B8A082;
   color: white;
   text-decoration: none;
   border: none;
@@ -28,5 +28,5 @@ body {
 }
 
 .activeBtn:hover {
-  background-color: #3a9bc1;
+  background-color: #A08972;
 }

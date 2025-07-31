@@ -1,6 +1,6 @@
 .uploadPage {
   min-height: calc(100vh - 120px);
-  background-color: #f8f9fa;
+  background-color: #FAF8F3;
   padding: 40px 20px;
   display: flex;
   align-items: center;
@@ -35,18 +35,18 @@
 }
 
 .uploadBox {
-  border: 2px dashed #47b5eb;
+  border: 2px dashed #E8D5B7;
   border-radius: 10px;
   padding: 60px 20px;
-  background-color: #f8f9fa;
+  background-color: #FAF8F3;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
 }
 
 .uploadBox:hover {
-  background-color: #e9ecef;
-  border-color: #3a9bc1;
+  background-color: #F5F2ED;
+  border-color: #D4C3A3;
 }
 
 .uploadIcon {
@@ -93,7 +93,7 @@
 }
 
 .nextButton {
-  background-color: #47b5eb;
+  background-color: #E8D5B7;
   color: white;
   border: none;
   border-radius: 8px;
@@ -105,5 +105,5 @@
 }
 
 .nextButton:hover {
-  background-color: #3a9bc1;
+  background-color: #D4C3A3;
 }
