@@ -80,7 +80,15 @@ export default function TransformPage() {
         </div>
 
         <div className={css.actionButtons}>
-          <button className='activeBtn'>변환된 이미지 다운로드</button>
+          <button className={css.activeBtn}>변환된 이미지 다운로드</button>
+          <button
+            onClick={() =>
+              navigate(`/share?style=${selectedStyle}&emotion=happy`)
+            }
+            className={css.shareButton}
+          >
+            작품 공유하기
+          </button>
           <button
             onClick={() => navigate('/result')}
             className={css.backButton}

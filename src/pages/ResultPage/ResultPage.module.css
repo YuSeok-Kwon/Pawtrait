@@ -189,6 +189,46 @@
 
 .downloadSection {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.shareButton {
+  padding: 12px 24px;
+  border: 2px solid #E8D5B7;
+  background: white;
+  color: #E8D5B7;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.shareButton:hover {
+  background: #E8D5B7;
+  color: white;
+}
+
+.activeBtn {
+  background-color: #B8A082;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 12px;
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-weight: 700;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.activeBtn:hover {
+  background-color: #A08972;
 }
 
 .buttons {
@@ -201,9 +241,9 @@
 .backButton,
 .homeButton {
   padding: 12px 24px;
-  border: 2px solid #e8d5b7;
+  border: 2px solid #E8D5B7;
   background: white;
-  color: #e8d5b7;
+  color: #E8D5B7;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
@@ -213,19 +253,6 @@
 
 .backButton:hover,
 .homeButton:hover {
-  background: #e8d5b7;
+  background: #E8D5B7;
   color: white;
-}
-
-@media (min-width: 768px) {
-  .resultContent {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 30px;
-  }
-
-  .portraitSection {
-    grid-column: 1 / -1;
-  }
 }

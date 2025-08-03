@@ -15,10 +15,10 @@ body {
 }
 
 .activeBtn {
-  background-color: #B8A082;
-  color: white;
+  background-color: #B8A082 !important;
+  color: white !important;
   text-decoration: none;
-  border: none;
+  border: none !important;
   border-radius: 12px;
   font-size: clamp(14px, 2.5vw, 20px);
   font-weight: 700;
@@ -28,5 +28,5 @@ body {
 }
 
 .activeBtn:hover {
-  background-color: #A08972;
+  background-color: #A08972 !important;
 }

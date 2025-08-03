@@ -88,7 +88,7 @@ export default function ResultPage() {
                   {selectedStyle && (
                     <div className={css.transformButton}>
                       <button
-                        className='activeBtn'
+                        className={css.activeBtn}
                         onClick={() =>
                           navigate(`/transform?style=${selectedStyle}`)
                         }
@@ -100,7 +100,15 @@ export default function ResultPage() {
                 </div>
 
                 <div className={css.downloadSection}>
-                  <button className='activeBtn'>초상화 다운로드</button>
+                  <button className={css.activeBtn}>초상화 다운로드</button>
+                  <button
+                    onClick={() =>
+                      navigate('/share?style=original&emotion=happy')
+                    }
+                    className={css.shareButton}
+                  >
+                    작품 공유하기
+                  </button>
                 </div>
               </div>
             </div>

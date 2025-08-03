@@ -119,10 +119,12 @@
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  margin-top: 40px;
 }
 
 .backButton,
-.newButton {
+.newButton,
+.shareButton {
   padding: 12px 24px;
   border: 2px solid #E8D5B7;
   background: white;
@@ -136,30 +138,25 @@
 }
 
 .backButton:hover,
-.newButton:hover {
+.newButton:hover,
+.shareButton:hover {
   background: #E8D5B7;
   color: white;
 }
 
-/* 모바일에서 세로 배치 */
-@media (max-width: 768px) {
-  .beforeAfter {
-    flex-direction: column;
-    gap: 20px;
-  }
+.activeBtn {
+  background-color: #B8A082;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 12px;
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-weight: 700;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-  .arrow {
-    transform: rotate(90deg);
-  }
-
-  .actionButtons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .backButton,
-  .newButton {
-    width: 100%;
-    max-width: 300px;
-  }
+.activeBtn:hover {
+  background-color: #A08972;
 }

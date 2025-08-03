@@ -1,0 +1,243 @@
+.sharePage {
+  min-height: 100vh;
+  background-color: #FAF8F3;
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.artworkCard {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.imageSection {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.artworkImage {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.infoSection {
+  flex: 1;
+  min-width: 250px;
+}
+
+.styleTag {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.emotionInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.emotionIcon {
+  font-size: 24px;
+}
+
+.emotionText {
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.shareSection {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.shareTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+}
+
+.urlShare {
+  margin-bottom: 40px;
+}
+
+.urlContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.urlInput {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+}
+
+.copyButton {
+  padding: 12px 20px;
+  background-color: #E8D5B7;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.copyButton:hover {
+  background-color: #D4C3A3;
+}
+
+.copyButton.copied {
+  background-color: #4CAF50;
+}
+
+.socialShare {
+  text-align: center;
+}
+
+.socialTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.socialButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.socialButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.socialButton.facebook {
+  background-color: #1877F2;
+  color: white;
+}
+
+.socialButton.facebook:hover {
+  background-color: #166FE5;
+}
+
+.socialButton.twitter {
+  background-color: #1DA1F2;
+  color: white;
+}
+
+.socialButton.twitter:hover {
+  background-color: #0D8BD9;
+}
+
+.socialButton.kakao {
+  background-color: #FEE500;
+  color: #3C1E1E;
+}
+
+.socialButton.kakao:hover {
+  background-color: #FAD700;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.backButton,
+.homeButton {
+  padding: 12px 24px;
+  border: 2px solid #E8D5B7;
+  background: white;
+  color: #E8D5B7;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.backButton:hover,
+.homeButton:hover {
+  background: #E8D5B7;
+  color: white;
+}
+
+.activeBtn {
+  background-color: #B8A082;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 12px;
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-weight: 700;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.activeBtn:hover {
+  background-color: #A08972;
+}
