@@ -13,20 +13,3 @@ body {
   min-height: 100vh;
   width: 100%;
 }
-
-.activeBtn {
-  background-color: #B8A082 !important;
-  color: white !important;
-  text-decoration: none;
-  border: none !important;
-  border-radius: 12px;
-  font-size: clamp(14px, 2.5vw, 20px);
-  font-weight: 700;
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.activeBtn:hover {
-  background-color: #A08972 !important;
-}

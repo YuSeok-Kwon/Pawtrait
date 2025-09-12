@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import css from './ResultPage.module.css';
+import Button from '../../components/Button'
 
 export default function ResultPage() {
   const navigate = useNavigate();
@@ -28,6 +29,8 @@ export default function ResultPage() {
       <div className={css.resultPage}>
         <div className={css.container}>
           <h1 className={css.title}>감정 분석 결과</h1>
+
+          // ToDo : 로컬컴포넌트로 나누기
 
           <div className={css.resultContent}>
             <div className={css.photoSection}>
@@ -72,17 +75,27 @@ export default function ResultPage() {
                 <div className={css.styleSelection}>
                   <h3 className={css.styleTitle}>다른 스타일로 변환하기</h3>
                   <div className={css.styleOptions}>
-                    {styleOptions.map(style => (
-                      <button
-                        key={style.id}
-                        className={`${css.styleOption} ${
-                          selectedStyle === style.id ? css.selected : ''
-                        }`}
-                        onClick={() => setSelectedStyle(style.id)}
-                      >
-                        <span>{style.name}</span>
-                      </button>
-                    ))}
+                    {styleOptions.map((style, index) => {
+                      // <button
+                      //   key={style.id}
+                      //   className={`${css.styleOption} ${selectedStyle === style.id ? css.selected : ''
+                      //     }`}
+                      //   onClick={() => setSelectedStyle(style.id)}
+                      // >
+                      //   <span>{style.name}</span>
+                      // </button>
+                      console.log(`CSS -> ${css[style.id]}`, style.id)
+
+                      return (
+                        <Button
+                          key={index}
+                          text={style.name}
+                          onClick={() => setSelectedStyle(style.id)}
+                          theme='primary'
+                          className={`${css.styleOption} ${css[style.id]}`} />
+                      )
+
+                    })}
                   </div>
 
                   {selectedStyle && (

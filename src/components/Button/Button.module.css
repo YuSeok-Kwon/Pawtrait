@@ -1,0 +1,237 @@
+.primary {
+    background-color: #b8a082 !important;
+    color: white !important;
+    text-decoration: none;
+    border: none !important;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary:hover {
+    background-color: #a08972 !important;
+}
+
+.secondary {
+    border: 2px solid #e8d5b7;
+    background: white;
+    color: #e8d5b7;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.secondary:hover {
+    background: #e8d5b7;
+    color: white;
+}
+
+/* .small {
+    margin
+} */
+
+.medium {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 140px;
+}
+
+.small {
+    padding: 8px 16px;
+    font-size: 12px;
+    min-width: 100px;
+}
+
+.large {
+    padding: 16px 32px;
+    font-size: 20px;
+    font-weight: 700;
+    min-width: 180px;
+}
+
+
+.socialButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.socialButton.facebook {
+    background-color: #1877f2;
+    color: white;
+}
+
+.socialButton.facebook:hover {
+    background-color: #166fe5;
+}
+
+.socialButton.twitter {
+    background-color: #1da1f2;
+    color: white;
+}
+
+.socialButton.twitter:hover {
+    background-color: #0d8bd9;
+}
+
+.socialButton.kakao {
+    background-color: #fee500;
+    color: #3c1e1e;
+}
+
+.socialButton.kakao:hover {
+    background-color: #fad700;
+}
+
+.actionButtons {
+    gap: 15px;
+}
+
+.backButton,
+.newButton,
+.shareButton {
+    min-width: 120px;
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.replayButton {
+    padding: 0.75rem 1.5rem;
+    background-color: #e8d5b7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.replayButton:hover {
+    background-color: #d4c3a3;
+    transform: translateY(-1px);
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.backButton,
+.newButton,
+.shareButton {
+    padding: 12px 24px;
+    border: 2px solid #e8d5b7;
+    background: white;
+    color: #e8d5b7;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.backButton:hover,
+.newButton:hover,
+.shareButton:hover {
+    background: #e8d5b7;
+    color: white;
+}
+
+.activeBtn {
+    background-color: #b8a082;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 12px;
+    font-size: clamp(14px, 2.5vw, 20px);
+    font-weight: 700;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.activeBtn:hover {
+    background-color: #a08972;
+}
+
+.socialButtons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.copyButton {
+    padding: 12px 20px;
+    background-color: #e8d5b7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.copyButton:hover {
+    background-color: #d4c3a3;
+}
+
+.copyButton.copied {
+    background-color: #4caf50;
+}
+
+.backButton {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.backButton:hover {
+    background-color: #545b62;
+}
+
+.nextButton {
+    background-color: #e8d5b7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nextButton:hover {
+    background-color: #d4c3a3;
+}

@@ -1,6 +1,6 @@
 .sharePage {
   min-height: 100vh;
-  background-color: #FAF8F3;
+  background-color: #faf8f3;
   padding: 20px 0;
 }
 
@@ -120,25 +120,7 @@
   background-color: #f8f9fa;
 }
 
-.copyButton {
-  padding: 12px 20px;
-  background-color: #E8D5B7;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-width: 80px;
-}
 
-.copyButton:hover {
-  background-color: #D4C3A3;
-}
-
-.copyButton.copied {
-  background-color: #4CAF50;
-}
 
 .socialShare {
   text-align: center;
@@ -149,95 +131,4 @@
   font-weight: 600;
   margin-bottom: 20px;
   color: #555;
-}
-
-.socialButtons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.socialButton {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  min-width: 120px;
-  justify-content: center;
-}
-
-.socialButton.facebook {
-  background-color: #1877F2;
-  color: white;
-}
-
-.socialButton.facebook:hover {
-  background-color: #166FE5;
-}
-
-.socialButton.twitter {
-  background-color: #1DA1F2;
-  color: white;
-}
-
-.socialButton.twitter:hover {
-  background-color: #0D8BD9;
-}
-
-.socialButton.kakao {
-  background-color: #FEE500;
-  color: #3C1E1E;
-}
-
-.socialButton.kakao:hover {
-  background-color: #FAD700;
-}
-
-.actionButtons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.backButton,
-.homeButton {
-  padding: 12px 24px;
-  border: 2px solid #E8D5B7;
-  background: white;
-  color: #E8D5B7;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-width: 140px;
-}
-
-.backButton:hover,
-.homeButton:hover {
-  background: #E8D5B7;
-  color: white;
-}
-
-.activeBtn {
-  background-color: #B8A082;
-  color: white;
-  text-decoration: none;
-  border: none;
-  border-radius: 12px;
-  font-size: clamp(14px, 2.5vw, 20px);
-  font-weight: 700;
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.activeBtn:hover {
-  background-color: #A08972;
 }

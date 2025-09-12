@@ -55,17 +55,14 @@ export default function TransformPage() {
         <div className={css.container}>
           <div className={css.animationSection}>
             <TransformAnimation
-              originalImage="https://via.placeholder.com/400x400/f5f5f5/666?text=원본+이미지"
+              originalImage='https://via.placeholder.com/400x400/f5f5f5/666?text=원본+이미지'
               transformedImage={`https://via.placeholder.com/400x400/e8d5b7/333?text=${currentStyle.name}+변환`}
               style={currentStyle.name}
               onComplete={handleAnimationComplete}
             />
-            
+
             <div className={css.skipSection}>
-              <button 
-                onClick={skipAnimation}
-                className={css.skipButton}
-              >
+              <button onClick={skipAnimation} className={css.skipButton}>
                 건너뛰기 →
               </button>
             </div>
@@ -94,7 +91,7 @@ export default function TransformPage() {
               <h3 className={css.sectionTitle}>원본 초상화</h3>
               <div className={css.imageContainer}>
                 <img
-                  src="https://via.placeholder.com/350x350/f5f5f5/666?text=원본+이미지"
+                  src='https://via.placeholder.com/350x350/f5f5f5/666?text=원본+이미지'
                   alt='원본 AI 초상화'
                   className={css.resultImage}
                 />
@@ -119,7 +116,7 @@ export default function TransformPage() {
 
           {/* 다시 애니메이션 보기 버튼 */}
           <div className={css.replaySection}>
-            <button 
+            <button
               onClick={() => setShowAnimation(true)}
               className={css.replayButton}
             >

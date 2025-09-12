@@ -1,6 +1,6 @@
 .transformPage {
   min-height: 100vh;
-  background-color: #FAF8F3;
+  background-color: #faf8f3;
   padding: 20px 0;
 }
 
@@ -36,8 +36,8 @@
 .skipButton {
   padding: 0.75rem 1.5rem;
   background-color: transparent;
-  border: 2px solid #D4C3A3;
-  color: #B8A082;
+  border: 2px solid #d4c3a3;
+  color: #b8a082;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
@@ -46,7 +46,7 @@
 }
 
 .skipButton:hover {
-  background-color: #D4C3A3;
+  background-color: #d4c3a3;
   color: white;
   transform: translateY(-1px);
 }
@@ -106,7 +106,7 @@
   display: flex;
   justify-content: center;
   padding: 15px;
-  background: #FAF8F3;
+  background: #faf8f3;
   border-radius: 15px;
   box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -135,7 +135,7 @@
 
 .arrowIcon {
   font-size: 36px;
-  color: #E8D5B7;
+  color: #e8d5b7;
   font-weight: bold;
   background: white;
   width: 60px;
@@ -145,7 +145,7 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border: 3px solid #E8D5B7;
+  border: 3px solid #e8d5b7;
 }
 
 /* 다시 보기 섹션 */
@@ -157,72 +157,7 @@
   border-top: 1px solid #f0f0f0;
 }
 
-.replayButton {
-  padding: 0.75rem 1.5rem;
-  background-color: #E8D5B7;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 
-.replayButton:hover {
-  background-color: #D4C3A3;
-  transform: translateY(-1px);
-}
-
-.actionButtons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 40px;
-}
-
-.backButton,
-.newButton,
-.shareButton {
-  padding: 12px 24px;
-  border: 2px solid #E8D5B7;
-  background: white;
-  color: #E8D5B7;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-width: 140px;
-}
-
-.backButton:hover,
-.newButton:hover,
-.shareButton:hover {
-  background: #E8D5B7;
-  color: white;
-}
-
-.activeBtn {
-  background-color: #B8A082;
-  color: white;
-  text-decoration: none;
-  border: none;
-  border-radius: 12px;
-  font-size: clamp(14px, 2.5vw, 20px);
-  font-weight: 700;
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.activeBtn:hover {
-  background-color: #A08972;
-}
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
@@ -240,15 +175,5 @@
     transform: rotate(90deg);
   }
 
-  .actionButtons {
-    gap: 15px;
-  }
 
-  .backButton,
-  .newButton,
-  .shareButton {
-    min-width: 120px;
-    padding: 10px 16px;
-    font-size: 14px;
-  }
 }

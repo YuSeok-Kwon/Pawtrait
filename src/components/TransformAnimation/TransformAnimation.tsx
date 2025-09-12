@@ -14,7 +14,7 @@ export default function TransformAnimation({
   originalImage,
   transformedImage,
   style,
-  onComplete
+  onComplete,
 }: TransformAnimationProps) {
   const [currentStage, setCurrentStage] = useState<AnimationStage>('original');
   const [isPlaying, setIsPlaying] = useState(false);
@@ -23,30 +23,39 @@ export default function TransformAnimation({
   const intervalRef = useRef<number | null>(null);
 
   // 단계별 이미지 정의
-  const stages: Record<AnimationStage, { image: string; label: string; duration: number }> = {
+  const stages: Record<
+    AnimationStage,
+    { image: string; label: string; duration: number }
+  > = {
     original: {
       image: originalImage,
       label: '원본 이미지',
-      duration: 1000
+      duration: 1000,
     },
     processing1: {
       image: 'https://via.placeholder.com/400x400/f0f0f0/999?text=AI+분석중...',
       label: 'AI 분석 중',
-      duration: 1500
+      duration: 1500,
     },
     processing2: {
-      image: 'https://via.placeholder.com/400x400/e0e0e0/777?text=스타일+적용중...',
+      image:
+        'https://via.placeholder.com/400x400/e0e0e0/777?text=스타일+적용중...',
       label: `${style} 스타일 적용 중`,
-      duration: 2000
+      duration: 2000,
     },
     final: {
       image: transformedImage,
       label: `${style} 스타일 완성`,
-      duration: 1000
-    }
+      duration: 1000,
+    },
   };
 
-  const stageOrder: AnimationStage[] = ['original', 'processing1', 'processing2', 'final'];
+  const stageOrder: AnimationStage[] = [
+    'original',
+    'processing1',
+    'processing2',
+    'final',
+  ];
 
   // 애니메이션 시작/정지
   const toggleAnimation = () => {
@@ -156,9 +165,7 @@ export default function TransformAnimation({
               style={{ width: `${progress}%` }}
             />
           </div>
-          <span className={css.progressText}>
-            {Math.round(progress)}% 완료
-          </span>
+          <span className={css.progressText}>{Math.round(progress)}% 완료</span>
         </div>
 
         {/* 단계 표시 */}
@@ -196,7 +203,7 @@ export default function TransformAnimation({
 
           <div className={css.speedControl}>
             <span className={css.speedLabel}>속도:</span>
-            {[0.5, 1, 1.5, 2].map((speedOption) => (
+            {[0.5, 1, 1.5, 2].map(speedOption => (
               <button
                 key={speedOption}
                 onClick={() => changeSpeed(speedOption)}

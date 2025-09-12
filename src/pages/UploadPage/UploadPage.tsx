@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import css from './UploadPage.module.css';
+import Button from '../../components/Button'
 
 function UploadPage() {
   const navigate = useNavigate();
@@ -20,12 +21,8 @@ function UploadPage() {
           </div>
 
           <div className={css.buttons}>
-            <button onClick={() => navigate('/')} className={css.backButton}>
-              이전으로
-            </button>
-            <button onClick={() => navigate('/result')} className='activeBtn'>
-              감정 분석 시작
-            </button>
+            <Button onClick={() => navigate('/')} text={"이전으로"} theme={"secondary"} />
+            <Button onClick={() => navigate('/result')} text={"감정 분석 시작"} theme={"primary"} />
           </div>
         </div>
       </div>

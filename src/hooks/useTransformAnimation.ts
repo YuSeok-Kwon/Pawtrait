@@ -11,7 +11,7 @@ interface UseTransformAnimationProps {
 export function useTransformAnimation({
   stages,
   onComplete,
-  autoStart = false
+  autoStart = false,
 }: UseTransformAnimationProps) {
   const [currentStage, setCurrentStage] = useState<AnimationStage>('original');
   const [isPlaying, setIsPlaying] = useState(false);
@@ -19,7 +19,12 @@ export function useTransformAnimation({
   const [speed, setSpeed] = useState(1);
   const intervalRef = useRef<number | null>(null);
 
-  const stageOrder: AnimationStage[] = ['original', 'processing1', 'processing2', 'final'];
+  const stageOrder: AnimationStage[] = [
+    'original',
+    'processing1',
+    'processing2',
+    'final',
+  ];
 
   const pauseAnimation = useCallback(() => {
     if (intervalRef.current) {
@@ -31,7 +36,7 @@ export function useTransformAnimation({
 
   const startAnimation = useCallback(() => {
     if (intervalRef.current) return;
-    
+
     setIsPlaying(true);
     let currentIndex = stageOrder.indexOf(currentStage);
     let progressValue = progress;
@@ -39,16 +44,16 @@ export function useTransformAnimation({
     intervalRef.current = window.setInterval(() => {
       const currentStageName = stageOrder[currentIndex];
       const stageDuration = stages[currentStageName].duration / speed;
-      
+
       progressValue += (100 / stageDuration) * 50;
 
       if (progressValue >= 100) {
         progressValue = 0;
         currentIndex = (currentIndex + 1) % stageOrder.length;
-        
+
         const nextStage = stageOrder[currentIndex];
         setCurrentStage(nextStage);
-        
+
         if (nextStage === 'final' && currentIndex === stageOrder.length - 1) {
           setTimeout(() => {
             pauseAnimation();
@@ -59,7 +64,15 @@ export function useTransformAnimation({
 
       setProgress(progressValue);
     }, 50);
-  }, [currentStage, progress, speed, stages, stageOrder, onComplete, pauseAnimation]);
+  }, [
+    currentStage,
+    progress,
+    speed,
+    stages,
+    stageOrder,
+    onComplete,
+    pauseAnimation,
+  ]);
 
   const toggleAnimation = useCallback(() => {
     if (isPlaying) {
@@ -75,14 +88,17 @@ export function useTransformAnimation({
     setProgress(0);
   }, [pauseAnimation]);
 
-  const changeSpeed = useCallback((newSpeed: number) => {
-    setSpeed(newSpeed);
-    
-    if (isPlaying) {
-      pauseAnimation();
-      setTimeout(() => startAnimation(), 100);
-    }
-  }, [isPlaying, startAnimation, pauseAnimation]);
+  const changeSpeed = useCallback(
+    (newSpeed: number) => {
+      setSpeed(newSpeed);
+
+      if (isPlaying) {
+        pauseAnimation();
+        setTimeout(() => startAnimation(), 100);
+      }
+    },
+    [isPlaying, startAnimation, pauseAnimation]
+  );
 
   // 자동 시작
   useEffect(() => {
@@ -109,6 +125,6 @@ export function useTransformAnimation({
     resetAnimation,
     changeSpeed,
     startAnimation,
-    pauseAnimation
+    pauseAnimation,
   };
 }
