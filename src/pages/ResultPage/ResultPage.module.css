@@ -145,10 +145,17 @@
 }
 
 .styleOptions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 15px;
-  justify-items: center;
+  flex-wrap: nowrap;
+  margin: 20px 0;
+}
+
+.styleOptions>* {
+  flex: 1;
+  max-width: 160px;
+  min-width: 140px;
 }
 
 .styleOption {

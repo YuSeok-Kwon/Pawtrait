@@ -45,3 +45,6 @@ backup/
 
 # docs
 docs/
+
+# GitHub configuration files
+.github/

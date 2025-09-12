@@ -1,5 +1,6 @@
 import css from './PricingSection.module.css';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../../../components/Button';
 
 export default function PricingSection() {
   const navigate = useNavigate();
@@ -13,9 +14,13 @@ export default function PricingSection() {
           <p className={css.priceDescription}>
             모든 기능을 완전히 <strong>무료</strong>로 이용하실 수 있습니다
           </p>
-          <button onClick={() => navigate('/upload')} className='activeBtn'>
+          <Button
+            onClick={() => navigate('/upload')}
+            theme="beige"
+            size="medium"
+          >
             지금 무료로 시작하기
-          </button>
+          </Button>
         </div>
       </div>
     </div>

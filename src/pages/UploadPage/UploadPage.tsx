@@ -21,8 +21,8 @@ function UploadPage() {
           </div>
 
           <div className={css.buttons}>
-            <Button onClick={() => navigate('/')} text={"이전으로"} theme={"secondary"} />
-            <Button onClick={() => navigate('/result')} text={"감정 분석 시작"} theme={"primary"} />
+            <Button onClick={() => navigate('/')} theme="white" bordered>이전으로</Button>
+            <Button onClick={() => navigate('/result')} theme="beige">감정 분석 시작</Button>
           </div>
         </div>
       </div>

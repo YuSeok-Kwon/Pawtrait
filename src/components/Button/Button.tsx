@@ -1,17 +1,93 @@
-import css from "./Button.module.css"
+import React from "react";
+import styles from "./Button.module.css";
 
-// ToDo : 버튼 컴포넌트 완성하기
+export type ButtonTheme = 'beige' | 'white' | 'ghibli' | 'pokemon' | 'pixel' | 'picasso' | 'x-social' | 'instagram-social';
+export type ButtonSize = 'small' | 'medium' | 'large';
+
 interface ButtonProps {
-    text: string;
-    onClick: () => void;
-    theme: 'primary' | 'secondary';
-    size?: 'small' | 'medium' | 'large';
+    theme?: ButtonTheme;
+    size?: ButtonSize;
+    bordered?: boolean;
+    disabled?: boolean;
+    children: React.ReactNode;
     className?: string;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    href?: string;
+    target?: string;
+    type?: 'button' | 'submit' | 'reset';
+    imageSrc?: string;
+    imageAlt?: string;
+    iconSrc?: string;
+    iconAlt?: string;
 }
 
-export default function Button({ text, onClick, theme, className, size = 'medium', }: ButtonProps) {
+const Button: React.FC<ButtonProps> = ({
+    theme = 'beige',
+    size = 'medium',
+    bordered = false,
+    disabled = false,
+    children,
+    className = "",
+    onClick,
+    href,
+    target,
+    type = 'button',
+    imageSrc,
+    imageAlt,
+    iconSrc,
+    iconAlt,
+}) => {
+    const buttonClasses = [
+        styles.button,
+        styles[theme],
+        styles[size],
+        imageSrc ? styles.withImage : '',
+        bordered ? styles.bordered : '',
+        disabled ? styles.disabled : '',
+        className
+    ].filter(Boolean).join(' ');
+
+    const buttonContent = (
+        <>
+            {iconSrc && (
+                <img
+                    src={iconSrc}
+                    alt={iconAlt || ''}
+                    className={styles.buttonIcon}
+                />
+            )}
+            {imageSrc && (
+                <img
+                    src={imageSrc}
+                    alt={imageAlt || ''}
+                    className={styles.buttonImage}
+                />
+            )}
+            <span className={styles.buttonText}>{children}</span>
+        </>
+    ); if (href && !disabled) {
+        return (
+            <a
+                href={href}
+                target={target}
+                className={buttonClasses}
+                onClick={onClick as any}
+            >
+                {buttonContent}
+            </a>
+        );
+    }
 
     return (
-        <button onClick={onClick} className={`${css[theme]} ${css[size]} ${className}`}> {text} </button >
-    )
-}
+        <button
+            type={type}
+            className={buttonClasses}
+            onClick={onClick}
+            disabled={disabled}
+        >
+            {buttonContent}
+        </button>
+    );
+};
+
+export default Button;

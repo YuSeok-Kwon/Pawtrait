@@ -1,37 +1,22 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Button from '../../components/Button';
 import css from './SharePage.module.css';
+import { PLACEHOLDER_IMAGES } from '../../constants';
+import { useUrlParams } from '../../hooks/useUrlParams';
+import { getSocialStyleInfo, getEmotionInfo } from '../../utils';
 
 export default function SharePage() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { getStyleParam, getEmotionParam } = useUrlParams();
   const [copied, setCopied] = useState(false);
 
   // URL 파라미터에서 스타일과 이미지 정보 가져오기
-  const searchParams = new URLSearchParams(location.search);
-  const style = searchParams.get('style') || 'ghibli';
-  const emotion = searchParams.get('emotion') || 'happy';
+  const style = getStyleParam();
+  const emotion = getEmotionParam();
 
-  // 스타일별 정보
-  const styleInfo = {
-    ghibli: { name: '지브리', color: '#81C784' },
-    pixel: { name: '픽셀아트', color: '#FF7043' },
-    picasso: { name: '피카소', color: '#9C27B0' },
-    pokemon: { name: '포켓몬', color: '#42A5F5' },
-  };
-
-  // 감정별 정보
-  const emotionInfo = {
-    happy: { name: '행복', icon: '😊', color: '#FFD700' },
-    sad: { name: '슬픔', icon: '😢', color: '#87CEEB' },
-    angry: { name: '화남', icon: '😠', color: '#FF6347' },
-    surprised: { name: '놀람', icon: '😲', color: '#FF69B4' },
-  };
-
-  const currentStyle =
-    styleInfo[style as keyof typeof styleInfo] || styleInfo.ghibli;
-  const currentEmotion =
-    emotionInfo[emotion as keyof typeof emotionInfo] || emotionInfo.happy;
+  const currentStyle = getSocialStyleInfo(style);
+  const currentEmotion = getEmotionInfo(emotion);
 
   // 현재 URL 복사하기
   const copyToClipboard = async () => {
@@ -58,7 +43,7 @@ export default function SharePage() {
         <div className={css.artworkCard}>
           <div className={css.imageSection}>
             <img
-              src='https://via.placeholder.com/400x400/e8e8e8/666?text=AI+Portrait'
+              src={PLACEHOLDER_IMAGES.AI_PORTRAIT}
               alt={`${currentStyle.name} 스타일 초상화`}
               className={css.artworkImage}
             />
@@ -97,51 +82,60 @@ export default function SharePage() {
                 readOnly
                 className={css.urlInput}
               />
-              <button
+              <Button
                 onClick={copyToClipboard}
-                className={`${css.copyButton} ${copied ? css.copied : ''}`}
+                theme="white"
+                bordered
+                size="small"
+                className={copied ? css.copied : ''}
               >
                 {copied ? '복사됨!' : '복사'}
-              </button>
+              </Button>
             </div>
           </div>
 
           <div className={css.socialShare}>
             <h3 className={css.socialTitle}>소셜 미디어에 공유</h3>
             <div className={css.socialButtons}>
-              <a
+              <Button
                 href={shareLinks.x}
                 target='_blank'
-                rel='noopener noreferrer'
-                className={`${css.socialButton} ${css.x}`}
+                theme='x-social'
+                size='medium'
+                iconSrc='logo/X-logo.svg'
+                iconAlt='X 로고'
               >
-                X
-              </a>
-              <a
+                Twitter
+              </Button>
+              <Button
                 href={shareLinks.instagram}
                 target='_blank'
-                rel='noopener noreferrer'
-                className={`${css.socialButton} ${css.instagram}`}
+                theme='instagram-social'
+                size='medium'
+                iconSrc='logo/Instagram-logo.svg'
+                iconAlt='Instagram 로고'
               >
                 Instagram
-              </a>
+              </Button>
             </div>
           </div>
         </div>
 
         <div className={css.actionButtons}>
-          <button
+          <Button
             onClick={() => navigate('/result')}
-            className={css.backButton}
+            theme="white"
+            bordered
+            size="medium"
           >
             결과로 돌아가기
-          </button>
-          <button onClick={() => navigate('/upload')} className={css.activeBtn}>
+          </Button>
+          <Button onClick={() => navigate('/upload')} theme="beige" size="medium">
             새 작품 만들기
-          </button>
-          <button onClick={() => navigate('/')} className={css.homeButton}>
+          </Button>
+          <Button onClick={() => navigate('/')} theme="white" bordered size="medium">
             홈으로
-          </button>
+          </Button>
         </div>
       </div>
     </div>

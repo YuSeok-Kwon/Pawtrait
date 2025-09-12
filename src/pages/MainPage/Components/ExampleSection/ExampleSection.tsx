@@ -12,12 +12,12 @@ export default function ExampleSection() {
         </h2>
         <div className={css.exampleDiv}>
           <img
-            src='upload/emotion-analysis.png'
+            src='upload/pocketmon-style.png'
             alt='감정 분석 예시'
             className={css.exampleImg}
           />
           <img
-            src='upload/pixel-art-style.png'
+            src='upload/picaso-style.png'
             alt='픽셀 아트 스타일'
             className={css.exampleImg}
           />

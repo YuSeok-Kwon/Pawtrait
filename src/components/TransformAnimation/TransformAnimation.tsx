@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import css from './TransformAnimation.module.css';
+import { PLACEHOLDER_IMAGES } from '../../constants';
 
 interface TransformAnimationProps {
   originalImage: string;
@@ -33,13 +34,12 @@ export default function TransformAnimation({
       duration: 1000,
     },
     processing1: {
-      image: 'https://via.placeholder.com/400x400/f0f0f0/999?text=AI+분석중...',
+      image: PLACEHOLDER_IMAGES.PROCESSING_1,
       label: 'AI 분석 중',
       duration: 1500,
     },
     processing2: {
-      image:
-        'https://via.placeholder.com/400x400/e0e0e0/777?text=스타일+적용중...',
+      image: PLACEHOLDER_IMAGES.PROCESSING_2,
       label: `${style} 스타일 적용 중`,
       duration: 2000,
     },

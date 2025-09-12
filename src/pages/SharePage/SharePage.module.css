@@ -120,8 +120,6 @@
   background-color: #f8f9fa;
 }
 
-
-
 .socialShare {
   text-align: center;
 }
@@ -131,4 +129,19 @@
   font-weight: 600;
   margin-bottom: 20px;
   color: #555;
+}
+
+.socialButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 40px;
 }
