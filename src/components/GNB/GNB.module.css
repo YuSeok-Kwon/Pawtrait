@@ -41,6 +41,9 @@
   padding: 8px 12px;
   border-radius: 8px;
   transition: all 0.3s ease;
+  line-height: 1;
+  display: flex;
+  align-items: center;
 }
 
 .nav:hover {
@@ -62,4 +65,37 @@
 
 .activeBtn:hover {
   background-color: #d4c3a3;
+}
+
+.loginBtn {
+  background: none;
+  color: #b8a082;
+  text-decoration: none;
+  border: 2px solid #b8a082;
+  border-radius: 12px;
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-weight: 600;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.loginBtn:hover {
+  background-color: #b8a082;
+  color: white;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.userName {
+  font-size: clamp(14px, 2.5vw, 20px);
+  color: black;
+  font-weight: normal;
+  line-height: 1;
+  display: flex;
+  align-items: center;
 }

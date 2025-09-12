@@ -30,8 +30,15 @@
     min-width: 100px;
 }
 
+.gnb {
+    padding: 6px 12px;
+    font-size: clamp(14px, 2.5vw, 20px);
+    font-weight: 500;
+    min-width: 70px;
+}
+
 .medium {
-    padding: 12px 24px;
+    padding: 10px 24px;
     font-size: 16px;
     font-weight: 600;
     min-width: 140px;
@@ -46,8 +53,8 @@
 }
 
 .large {
-    padding: 16px 32px;
-    font-size: 20px;
+    padding: 12px 32px;
+    font-size: 18px;
     font-weight: 700;
     min-width: 180px;
 }

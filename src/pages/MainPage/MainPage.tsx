@@ -9,9 +9,15 @@ export default function MainPage() {
   return (
     <>
       <HeroSection />
-      <ExampleSection />
-      <GuideSection />
-      <PricingSection />
+      <div id="example-section">
+        <ExampleSection />
+      </div>
+      <div id="guide-section">
+        <GuideSection />
+      </div>
+      <div id="pricing-section">
+        <PricingSection />
+      </div>
     </>
   );
 }

@@ -1,0 +1,56 @@
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input {
+    padding: 10px 16px;
+    border: 2px solid #e8d5b7;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #b8a082;
+    box-shadow: 0 0 0 3px rgba(184, 160, 130, 0.1);
+}
+
+.input.error {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.input.auth {
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: #faf8f3;
+}
+
+.input.auth:focus {
+    background-color: white;
+    border-color: #b8a082;
+}
+
+.errorMessage {
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+.input::placeholder {
+    color: #999;
+}

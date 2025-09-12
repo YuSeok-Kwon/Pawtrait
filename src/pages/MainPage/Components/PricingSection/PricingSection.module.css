@@ -10,7 +10,7 @@
 .pricingContent {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .freePrice {
@@ -39,7 +39,7 @@
 .subTitle {
   font-size: clamp(24px, 4vw, 32px);
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   color: #333;
   max-width: 1100px;
   padding-top: 15px;

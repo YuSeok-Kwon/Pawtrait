@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Button.module.css";
 
 export type ButtonTheme = 'beige' | 'white' | 'ghibli' | 'pokemon' | 'pixel' | 'picasso' | 'x-social' | 'instagram-social';
-export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonSize = 'small' | 'gnb' | 'medium' | 'large';
 
 interface ButtonProps {
     theme?: ButtonTheme;

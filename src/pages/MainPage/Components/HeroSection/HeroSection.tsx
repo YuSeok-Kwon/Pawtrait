@@ -1,9 +1,21 @@
 import css from './HeroSection.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 import Button from '../../../../components/Button';
 
 export default function HeroSection() {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  const handleStartClick = () => {
+    if (isAuthenticated) {
+      // 로그인된 경우 업로드 페이지로 이동
+      navigate('/upload');
+    } else {
+      // 로그인되지 않은 경우 로그인 페이지로 이동
+      navigate('/login');
+    }
+  };
 
   return (
     <div className={css.heroSection}>
@@ -19,8 +31,9 @@ export default function HeroSection() {
           <br /> 아름다운 작품으로 간직하세요
         </p>
         <Button
-          onClick={() => navigate('/upload')}
-          theme="beige"
+          onClick={handleStartClick}
+          theme="white"
+          bordered
           size="medium"
         >
           시작하기

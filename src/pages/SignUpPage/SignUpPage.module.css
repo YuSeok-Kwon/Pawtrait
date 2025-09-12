@@ -1,0 +1,91 @@
+.signUpPage {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.signUpCard {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.generalError {
+    background-color: #fee;
+    color: #e74c3c;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb;
+}
+
+.signUpButton {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.loginText {
+    color: #666;
+    margin: 0;
+    font-size: 14px;
+}
+
+.loginLink {
+    color: #b8a082;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.loginLink:hover {
+    color: #a08972;
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .signUpCard {
+        padding: 30px 20px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+}

@@ -5,10 +5,10 @@ export default function ExampleSection() {
     <div className={css.exampleSection}>
       <div className={css.exampleContent}>
         <h2 className={css.subTitle}>
-          우리는 반려동물의 감정을 분석하고,
+          반려동물의 감정을 읽어내고,
           <br />
-          클래식 페인팅부터 모던 디지털 아트까지 다양한 아트 스타일로 사진을
-          변환합니다.
+          클래식부터 모던 아트까지 다양한 스타일로
+          특별한 작품을 만들어드립니다.
         </h2>
         <div className={css.exampleDiv}>
           <img
