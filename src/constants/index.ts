@@ -21,9 +21,37 @@ export const ROUTES = {
 
 // 플레이스홀더 이미지 URL
 export const PLACEHOLDER_IMAGES = {
-  ORIGINAL: 'https://via.placeholder.com/400x400/f5f5f5/666?text=원본+이미지',
+  ORIGINAL: '/upload/main-image.png',
   AI_PORTRAIT: 'https://via.placeholder.com/400x400/e8e8e8/666?text=AI+Portrait',
   UPLOADED_PHOTO: 'https://via.placeholder.com/400x300/f5f5f5/999?text=Uploaded+Photo',
-  PROCESSING_1: 'https://via.placeholder.com/400x400/f0f0f0/999?text=AI+분석중...',
-  PROCESSING_2: 'https://via.placeholder.com/400x400/e0e0e0/777?text=스타일+적용중...',
+  PROCESSING_1: '/upload/emotion-analysis.png',
+  PROCESSING_2: 'https://via.placeholder.com/400x400/d4c3a3/888?text=스타일+변환중...',
+} as const;
+
+// 애니메이션 단계별 설정
+export const ANIMATION_STAGES = {
+  ORIGINAL: {
+    name: 'original' as const,
+    label: '원본 이미지',
+    duration: 1000,
+    description: '업로드된 반려동물 사진'
+  },
+  EMOTION_ANALYSIS: {
+    name: 'processing1' as const,
+    label: '감정 분석 중',
+    duration: 2000,
+    description: 'AI가 반려동물의 감정을 분석하고 있습니다'
+  },
+  STYLE_PROCESSING: {
+    name: 'processing2' as const,
+    label: '스타일 적용 중',
+    duration: 2500,
+    description: '선택한 스타일로 변환하고 있습니다'
+  },
+  FINAL: {
+    name: 'final' as const,
+    label: '변환 완료',
+    duration: 1000,
+    description: '아름다운 작품이 완성되었습니다'
+  }
 } as const;

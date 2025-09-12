@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import css from './TransformAnimation.module.css';
-import { PLACEHOLDER_IMAGES } from '../../constants';
+import { PLACEHOLDER_IMAGES, ANIMATION_STAGES } from '../../constants';
 
 interface TransformAnimationProps {
   originalImage: string;
   transformedImage: string;
   style: string;
   onComplete?: () => void;
+  autoStart?: boolean;
 }
 
 type AnimationStage = 'original' | 'processing1' | 'processing2' | 'final';
@@ -16,37 +17,43 @@ export default function TransformAnimation({
   transformedImage,
   style,
   onComplete,
+  autoStart = true,
 }: TransformAnimationProps) {
   const [currentStage, setCurrentStage] = useState<AnimationStage>('original');
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(autoStart);
   const [progress, setProgress] = useState(0);
-  const [speed, setSpeed] = useState(1); // 1x, 1.5x, 2x 속도
+  const [isLoading, setIsLoading] = useState(true);
+  const [speed, setSpeed] = useState(1);
   const intervalRef = useRef<number | null>(null);
 
   // 단계별 이미지 정의
   const stages: Record<
     AnimationStage,
-    { image: string; label: string; duration: number }
+    { image: string; label: string; duration: number; description: string }
   > = {
     original: {
       image: originalImage,
-      label: '원본 이미지',
-      duration: 1000,
+      label: ANIMATION_STAGES.ORIGINAL.label,
+      duration: ANIMATION_STAGES.ORIGINAL.duration,
+      description: ANIMATION_STAGES.ORIGINAL.description,
     },
     processing1: {
       image: PLACEHOLDER_IMAGES.PROCESSING_1,
-      label: 'AI 분석 중',
-      duration: 1500,
+      label: ANIMATION_STAGES.EMOTION_ANALYSIS.label,
+      duration: ANIMATION_STAGES.EMOTION_ANALYSIS.duration,
+      description: ANIMATION_STAGES.EMOTION_ANALYSIS.description,
     },
     processing2: {
       image: PLACEHOLDER_IMAGES.PROCESSING_2,
-      label: `${style} 스타일 적용 중`,
-      duration: 2000,
+      label: `${style} ${ANIMATION_STAGES.STYLE_PROCESSING.label}`,
+      duration: ANIMATION_STAGES.STYLE_PROCESSING.duration,
+      description: `${style} 스타일로 ${ANIMATION_STAGES.STYLE_PROCESSING.description}`,
     },
     final: {
       image: transformedImage,
-      label: `${style} 스타일 완성`,
-      duration: 1000,
+      label: `${style} ${ANIMATION_STAGES.FINAL.label}`,
+      duration: ANIMATION_STAGES.FINAL.duration,
+      description: ANIMATION_STAGES.FINAL.description,
     },
   };
 
@@ -66,38 +73,42 @@ export default function TransformAnimation({
     }
   };
 
-  // 애니메이션 시작
+  // 애니메이션 시작 (간소화된 버전)
   const startAnimation = () => {
-    if (intervalRef.current) return;
+    if (intervalRef.current) return; // 이미 실행 중이면 중단
 
     setIsPlaying(true);
     let currentIndex = stageOrder.indexOf(currentStage);
     let progressValue = progress;
 
     intervalRef.current = window.setInterval(() => {
+      // 현재 스테이지의 지속시간 가져오기
       const currentStageName = stageOrder[currentIndex];
-      const stageDuration = stages[currentStageName].duration / speed;
+      const currentStageDuration = stages[currentStageName].duration;
 
-      progressValue += (100 / stageDuration) * 50; // 50ms 간격으로 업데이트
+      // 진행률을 간단하게 증가 (속도 반영)
+      const incrementAmount = (100 / currentStageDuration) * 100 * speed;
+      progressValue += incrementAmount;
 
+      // 현재 스테이지 완료 시
       if (progressValue >= 100) {
         progressValue = 0;
-        currentIndex = (currentIndex + 1) % stageOrder.length;
+        currentIndex = currentIndex + 1;
 
-        const nextStage = stageOrder[currentIndex];
-        setCurrentStage(nextStage);
-
-        // 마지막 단계 완료 시
-        if (nextStage === 'final' && currentIndex === stageOrder.length - 1) {
-          setTimeout(() => {
-            pauseAnimation();
-            onComplete?.();
-          }, stages.final.duration / speed);
+        // 다음 스테이지로 이동
+        if (currentIndex < stageOrder.length) {
+          const nextStage = stageOrder[currentIndex];
+          setCurrentStage(nextStage);
+        } else {
+          // 모든 스테이지 완료
+          pauseAnimation();
+          onComplete?.();
+          return;
         }
       }
 
       setProgress(progressValue);
-    }, 50);
+    }, 100); // 100ms마다 업데이트 (더 이해하기 쉬운 간격)
   };
 
   // 애니메이션 일시정지
@@ -119,24 +130,54 @@ export default function TransformAnimation({
   // 속도 변경
   const changeSpeed = (newSpeed: number) => {
     setSpeed(newSpeed);
-
-    // 재생 중이면 재시작
-    if (isPlaying) {
-      pauseAnimation();
-      setTimeout(() => startAnimation(), 100);
-    }
   };
 
-  // 컴포넌트 언마운트 시 정리
+  // 컴포넌트 시작 시 자동 실행 (간소화된 버전)
   useEffect(() => {
+    // 로딩 시간 시뮬레이션 후 애니메이션 시작
+    const startTimer = setTimeout(() => {
+      setIsLoading(false);
+
+      if (autoStart) {
+        // 0.5초 후 애니메이션 자동 시작
+        setTimeout(() => {
+          startAnimation();
+        }, 500);
+      }
+    }, 1000); // 1초 로딩 시간
+
+    // 컴포넌트 정리
     return () => {
+      clearTimeout(startTimer);
       if (intervalRef.current) {
         window.clearInterval(intervalRef.current);
       }
     };
-  }, []);
+  }, []);  // 속도 변경 시 처리 (간소화)
+  useEffect(() => {
+    // 속도가 변경되면 현재 재생 중인 경우에만 재시작
+    if (isPlaying) {
+      pauseAnimation();
+      startAnimation();
+    }
+  }, [speed]);
 
   const currentStageData = stages[currentStage];
+
+  // 로딩 중일 때
+  if (isLoading) {
+    return (
+      <div className={css.transformAnimation}>
+        <div className={css.container}>
+          <h2 className={css.title}>AI 변환 준비 중</h2>
+          <div className={css.loadingContainer}>
+            <div className={css.loadingSpinner}></div>
+            <p className={css.loadingText}>이미지를 불러오는 중...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={css.transformAnimation}>
@@ -153,6 +194,7 @@ export default function TransformAnimation({
             />
             <div className={css.imageOverlay}>
               <span className={css.stageLabel}>{currentStageData.label}</span>
+              <p className={css.stageDescription}>{currentStageData.description}</p>
             </div>
           </div>
         </div>

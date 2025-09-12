@@ -44,33 +44,11 @@
     min-width: 140px;
 }
 
-/* 이미지가 있는 버튼 전용 스타일 */
-.withImage.medium {
-    padding: 12px 16px;
-    font-size: 14px;
-    min-width: 120px;
-    min-height: 110px;
-}
-
 .large {
     padding: 12px 32px;
     font-size: 18px;
     font-weight: 700;
     min-width: 180px;
-}
-
-.withImage.large {
-    padding: 16px 24px;
-    font-size: 18px;
-    min-width: 140px;
-    min-height: 130px;
-}
-
-.withImage.small {
-    padding: 8px 12px;
-    font-size: 12px;
-    min-width: 100px;
-    min-height: 90px;
 }
 
 /* ==== 색상 테마 ==== */
@@ -96,48 +74,78 @@
     background-color: #f0ede6 !important;
 }
 
-/* 지브리 스타일 (초록 계열) */
+/* ==== 스타일 변환용 테마들 ==== */
+/* 지브리 스타일 (초록 계열) - 자연스러운 애니메이션 느낌 */
 .button.ghibli {
-    background: linear-gradient(135deg, #81C784 0%, #4CAF50 100%) !important;
-    color: white !important;
-    border-color: #4CAF50 !important;
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
 }
 
 .button.ghibli:hover {
-    background: linear-gradient(135deg, #66BB6A 0%, #388E3C 100%) !important;
+    background-color: #388E3C;
 }
 
-/* 포켓몬 스타일 (파랑 계열) */
+/* 포켓몬 스타일 (파랑 계열) - 게임 캐릭터 느낌 */
 .button.pokemon {
-    background: linear-gradient(135deg, #42A5F5 0%, #1976D2 100%) !important;
-    color: white !important;
-    border-color: #1976D2 !important;
+    background-color: #1976D2;
+    color: white;
+    border-color: #1976D2;
 }
 
 .button.pokemon:hover {
-    background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%) !important;
+    background-color: #1565C0;
 }
 
-/* 픽셀아트 스타일 (주황 계열) */
+/* 픽셀아트 스타일 (주황 계열) - 8비트 게임 느낌 */
 .button.pixel {
-    background: linear-gradient(135deg, #FF7043 0%, #F4511E 100%) !important;
-    color: white !important;
-    border-color: #F4511E !important;
+    background-color: #F4511E;
+    color: white;
+    border-color: #F4511E;
 }
 
 .button.pixel:hover {
-    background: linear-gradient(135deg, #FF5722 0%, #E64A19 100%) !important;
+    background-color: #E64A19;
 }
 
-/* 피카소 스타일 (보라 계열) */
+/* 피카소 스타일 (보라 계열) - 추상적 아트 느낌 */
 .button.picasso {
-    background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%) !important;
-    color: white !important;
-    border-color: #673AB7 !important;
+    background-color: #673AB7;
+    color: white;
+    border-color: #673AB7;
 }
 
 .button.picasso:hover {
-    background: linear-gradient(135deg, #8E24AA 0%, #5E35B1 100%) !important;
+    background-color: #5E35B1;
+}
+
+/* ==== 소셜 공유용 테마들 ==== */
+/* X(트위터) 공유 버튼 - 흰색 배경에 검은 테두리 */
+.button.x-social {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.button.x-social:hover {
+    background-color: #f8f9fa;
+}
+
+/* 인스타그램 공유 버튼 - 흰색 배경에 핑크 테두리 */
+.button.instagram-social {
+    background-color: white;
+    color: #E1306C;
+    border: 2px solid #E1306C;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.button.instagram-social:hover {
+    background-color: #fdf2f8;
 }
 
 /* ==== 테두리 스타일 ==== */
@@ -166,20 +174,32 @@
     box-shadow: none !important;
 }
 
-/* ==== 버튼 이미지 스타일 ==== */
+/* ==== 버튼 이미지 스타일 (스타일 선택용) ==== */
+.withImage {
+    flex-direction: column;
+    /* 이미지를 위로, 텍스트를 아래로 */
+}
+
 .buttonImage {
     width: 70px;
     height: 70px;
-    border-radius: 12px;
     object-fit: cover;
-    margin-bottom: 6px;
+    border-radius: 8px;
+    margin-bottom: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* 사이즈별 이미지 크기 조정 */
 .small .buttonImage {
     width: 45px;
     height: 45px;
     margin-bottom: 4px;
+}
+
+.medium .buttonImage {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 6px;
 }
 
 .large .buttonImage {
@@ -188,45 +208,15 @@
     margin-bottom: 8px;
 }
 
-/* ==== 버튼 텍스트 스타일 ==== */
-.buttonText {
-    display: block;
-    text-align: center;
+/* 이미지가 있는 버튼의 최소 높이 조정 */
+.withImage.small {
+    min-height: 90px;
 }
 
-/* ==== 소셜 버튼 아이콘 스타일 ==== */
-.buttonIcon {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-    object-fit: contain;
+.withImage.medium {
+    min-height: 110px;
 }
 
-/* ==== 소셜 버튼 테마 ==== */
-/* X (트위터) 소셜 버튼 */
-.button.x-social {
-    background-color: white !important;
-    color: black !important;
-    border: 2px solid black !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-.button.x-social:hover {
-    background-color: #f8f9fa !important;
-}
-
-/* 인스타그램 소셜 버튼 */
-.button.instagram-social {
-    background-color: white !important;
-    color: #E1306C !important;
-    border: 2px solid #E1306C !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-.button.instagram-social:hover {
-    background-color: #fdf2f8 !important;
+.withImage.large {
+    min-height: 130px;
 }
