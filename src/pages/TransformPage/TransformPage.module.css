@@ -81,6 +81,18 @@
   margin-bottom: 40px;
 }
 
+/* 비교 슬라이더 섹션 */
+.comparisonSection {
+  text-align: center;
+}
+
+.comparisonTitle {
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
+}
+
 .beforeAfter {
   display: flex;
   align-items: center;
@@ -157,6 +169,16 @@
   border-top: 1px solid #f0f0f0;
 }
 
+/* 액션 버튼들 */
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
 
 
 /* 반응형 디자인 */
@@ -175,5 +197,9 @@
     transform: rotate(90deg);
   }
 
-
+  .actionButtons {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+  }
 }

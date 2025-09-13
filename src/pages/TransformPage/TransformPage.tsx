@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import TransformAnimation from '../../components/TransformAnimation';
 import Button from '../../components/Button';
+import ImageComparison from '../../components/ImageComparison';
 import css from './TransformPage.module.css';
 import { PLACEHOLDER_IMAGES } from '../../constants';
 import { useUrlParams } from '../../hooks/useUrlParams';
@@ -63,32 +64,15 @@ export default function TransformPage() {
         </div>
 
         <div className={css.resultContent}>
-          <div className={css.beforeAfter}>
-            <div className={css.imageSection}>
-              <h3 className={css.sectionTitle}>원본 초상화</h3>
-              <div className={css.imageContainer}>
-                <img
-                  src={PLACEHOLDER_IMAGES.ORIGINAL}
-                  alt='원본 AI 초상화'
-                  className={css.resultImage}
-                />
-              </div>
-            </div>
-
-            <div className={css.arrow}>
-              <div className={css.arrowIcon}>→</div>
-            </div>
-
-            <div className={css.imageSection}>
-              <h3 className={css.sectionTitle}>변환된 초상화</h3>
-              <div className={css.imageContainer}>
-                <img
-                  src={`https://via.placeholder.com/350x350/e8d5b7/333?text=${currentStyle.name}+변환`}
-                  alt={`${currentStyle.name} 스타일 초상화`}
-                  className={css.resultImage}
-                />
-              </div>
-            </div>
+          {/* 비교 슬라이더 */}
+          <div className={css.comparisonSection}>
+            <h3 className={css.comparisonTitle}>변환 전후 비교</h3>
+            <ImageComparison
+              beforeImage={PLACEHOLDER_IMAGES.ORIGINAL}
+              afterImage={generateTransformedImageUrl(currentStyle.name)}
+              beforeLabel=""
+              afterLabel=""
+            />
           </div>
 
           {/* 다시 애니메이션 보기 버튼 */}

@@ -32,17 +32,31 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    // 페이지 새로고침 시 로그인 상태 복구 (간단한 방식)
+    // 로그인 만료 시간 (2시간) - 주니어 개발자가 쉽게 수정할 수 있게
+    const LOGIN_DURATION = 2 * 60 * 60 * 1000; // 2시간
+
+    // 페이지 새로고침 시 로그인 상태 복구 (만료 시간 체크 포함)
     useEffect(() => {
         const savedUser = localStorage.getItem('pawtrait_user');
+        const loginTime = localStorage.getItem('pawtrait_login_time');
 
-        if (savedUser) {
-            // JSON 파싱이 실패하면 로그아웃 처리
+        if (savedUser && loginTime) {
             try {
                 const user = JSON.parse(savedUser);
-                setUser(user);
+                const loginTimestamp = parseInt(loginTime);
+                const currentTime = Date.now();
+
+                // 설정된 시간이 지났으면 자동 로그아웃
+                if (currentTime - loginTimestamp > LOGIN_DURATION) {
+                    localStorage.removeItem('pawtrait_user');
+                    localStorage.removeItem('pawtrait_login_time');
+                    console.log('로그인이 만료되어 자동 로그아웃됩니다.');
+                } else {
+                    setUser(user);
+                }
             } catch {
                 localStorage.removeItem('pawtrait_user');
+                localStorage.removeItem('pawtrait_login_time');
             }
         }
 
@@ -61,7 +75,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 email: email
             };
 
+            // 사용자 정보와 로그인 시간 저장
             localStorage.setItem('pawtrait_user', JSON.stringify(testUser));
+            localStorage.setItem('pawtrait_login_time', Date.now().toString());
             setUser(testUser);
         } else {
             alert('이메일: test@pawtrait.com, 비밀번호: 123456 으로 테스트해주세요');
@@ -81,7 +97,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             email: email
         };
 
+        // 사용자 정보와 로그인 시간 저장
         localStorage.setItem('pawtrait_user', JSON.stringify(newUser));
+        localStorage.setItem('pawtrait_login_time', Date.now().toString());
         setUser(newUser);
         setIsLoading(false);
 
@@ -96,6 +114,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // 로그아웃 - 저장된 정보 삭제
     const logout = () => {
         localStorage.removeItem('pawtrait_user');
+        localStorage.removeItem('pawtrait_login_time');
         setUser(null);
     };
 

@@ -40,6 +40,40 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 8px;
+}
+
+.toggleButton {
+  padding: 8px 16px;
+  border: 2px solid #e8d5b7;
+  background: white;
+  color: #b8a082;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggleButton:hover {
+  background: #f5f1e8;
+}
+
+.toggleButton.active {
+  background: #b8a082;
+  color: white;
+  border-color: #b8a082;
+}
+
 .photoContainer {
   display: flex;
   justify-content: center;
@@ -277,5 +311,38 @@
 }
 
 .picasso {
-  background-color: 123456 !important;
+  background-color: #123456 !important;
+}
+
+/* 이미지 비교 섹션 */
+.comparisonSection {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.comparisonSection .sectionTitle {
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #b8a082;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .sectionHeader {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .viewToggle {
+    align-self: stretch;
+  }
+
+  .toggleButton {
+    flex: 1;
+    text-align: center;
+  }
 }

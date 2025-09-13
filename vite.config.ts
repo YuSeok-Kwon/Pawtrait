@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
 // Vite 설정 파일 (개발 서버 설정)
 export default defineConfig({
@@ -9,8 +10,8 @@ export default defineConfig({
   // 경로 별칭 설정
   resolve: {
     alias: {
-      '@': '/src', // '@'는 src 폴더
-      '@shared': '../shared', // '@shared'는 공용 폴더
+      '@': path.resolve(__dirname, './src'), // '@'는 src 폴더
+      '@shared': path.resolve(__dirname, './shared'), // '@shared'는 공용 폴더
     },
   },
 
