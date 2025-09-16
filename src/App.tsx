@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
+import { ImageProvider } from './contexts/ImageContext';
 import MainPage from './pages/MainPage';
 import UploadPage from './pages/UploadPage';
 import ResultPage from './pages/ResultPage';
@@ -14,22 +15,24 @@ import Footer from './components/Footer';
 function App() {
   return (
     <AuthProvider>
-      <div className='app'>
-        <Router>
-          <GNB />
-          <Routes>
-            <Route path='/' element={<MainPage />} />
-            <Route path='/upload' element={<UploadPage />} />
-            <Route path='/result' element={<ResultPage />} />
-            <Route path='/transform' element={<TransformPage />} />
-            <Route path='/share' element={<SharePage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/signup' element={<SignUpPage />} />
-            <Route path='/email-verification' element={<EmailVerificationPage />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </div>
+      <ImageProvider>
+        <div className='app'>
+          <Router>
+            <GNB />
+            <Routes>
+              <Route path='/' element={<MainPage />} />
+              <Route path='/upload' element={<UploadPage />} />
+              <Route path='/result' element={<ResultPage />} />
+              <Route path='/transform' element={<TransformPage />} />
+              <Route path='/share' element={<SharePage />} />
+              <Route path='/login' element={<LoginPage />} />
+              <Route path='/signup' element={<SignUpPage />} />
+              <Route path='/email-verification' element={<EmailVerificationPage />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </div>
+      </ImageProvider>
     </AuthProvider>
   );
 }

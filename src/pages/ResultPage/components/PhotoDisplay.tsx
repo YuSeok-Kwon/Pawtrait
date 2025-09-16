@@ -2,17 +2,20 @@ import { useState } from 'react';
 import css from '../ResultPage.module.css';
 import { PLACEHOLDER_IMAGES } from '../../../constants';
 import ImageComparison from '@/components/ImageComparison';
+import { useImage } from '../../../contexts/ImageContext';
 
 interface PhotoDisplayProps {
-    photoSrc?: string;
     transformedSrc?: string;
 }
 
 export default function PhotoDisplay({
-    photoSrc = PLACEHOLDER_IMAGES.UPLOADED_PHOTO,
     transformedSrc = '/upload/zhibli-style.png'
 }: PhotoDisplayProps) {
+    const { currentPhoto } = useImage();
     const [viewMode, setViewMode] = useState<'single' | 'comparison'>('single');
+
+    // 업로드된 이미지가 있으면 그것을 사용하고, 없으면 기본 이미지(플레이스홀더)를 보여줍니다.
+    const photoSrc = currentPhoto || PLACEHOLDER_IMAGES.UPLOADED_PHOTO;
 
     return (
         <div className={css.photoSection}>

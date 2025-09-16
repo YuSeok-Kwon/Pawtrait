@@ -75,3 +75,73 @@
   gap: 20px;
   justify-content: center;
 }
+
+/* 미리보기 관련 스타일 */
+.previewContainer {
+  text-align: center;
+}
+
+.imagePreview {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.fileInfo {
+  background-color: #faf8f3;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.fileInfo h3 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e8d5b7;
+}
+
+.infoItem:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.infoLabel {
+  font-weight: 500;
+  color: #666;
+  font-size: 14px;
+}
+
+.infoValue {
+  font-weight: 400;
+  color: #333;
+  font-size: 14px;
+  text-align: right;
+  word-break: break-all;
+}
+
+.changeButton {
+  margin-bottom: 20px;
+}
