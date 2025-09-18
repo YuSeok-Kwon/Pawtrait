@@ -29,11 +29,11 @@ export default function TransformAnimation({
       description: '반려동물의 원본 사진입니다'
     },
     {
-      name: '감정 분석 중...',
+      name: '장면 분석 중...',
       image: originalImage,
       showLoading: true,
       showBlending: false,
-      description: 'AI가 반려동물의 감정을 분석하고 있어요'
+      description: 'AI가 반려동물의 포즈와 배경을 분석하고 있어요'
     },
     {
       name: `${style} 스타일 변환 중...`,

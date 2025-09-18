@@ -4,7 +4,7 @@ import { useImage } from '@/contexts/ImageContext';
 
 interface UseStyleTransformOptions {
   style: string | null;
-  emotion?: string; // 향후 감정 분석 추가 대비
+  sceneData?: string; // 향후 장면 분석 추가 대비
 }
 
 interface UseStyleTransformResult {
@@ -13,17 +13,17 @@ interface UseStyleTransformResult {
   isFallback: boolean;
   applyFilter: boolean;
   toggleFilter: () => void;
-  emotion: string; // 백엔드에서 전달된 감정
+  sceneAnalysis: string; // 백엔드에서 전달된 장면 분석 결과
 }
 
 // 스타일 변환 API 호출 + 상태 관리 훅
-export function useStyleTransform({ style, emotion = 'happy' }: UseStyleTransformOptions): UseStyleTransformResult {
-  const { imageId, currentPhoto, setTransformedPhoto } = useImage();
+export function useStyleTransform({ style, sceneData = 'sitting' }: UseStyleTransformOptions): UseStyleTransformResult {
+  const { imageId, setTransformedPhoto } = useImage();
   const [transformedImage, setTransformedImage] = useState('');
   const [isTransforming, setIsTransforming] = useState(false);
   const [isFallback, setIsFallback] = useState(false);
   const [applyFilter, setApplyFilter] = useState(false);
-  const [detectedEmotion, setDetectedEmotion] = useState('');
+  const [detectedScene, setDetectedScene] = useState('');
   const startedRef = useRef(false);
 
   useEffect(() => {
@@ -34,22 +34,22 @@ export function useStyleTransform({ style, emotion = 'happy' }: UseStyleTransfor
       setIsTransforming(true);
       setIsFallback(false);
       try {
-        console.log('[useStyleTransform] 요청 시작', { style, imageId, emotion });
+        console.log('[useStyleTransform] 요청 시작', { style, imageId, sceneData });
         const res = await fetch('/api/images/process', {
           method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ imageId, style, emotion })
+            body: JSON.stringify({ imageId, style, sceneData })
         });
         console.log('[useStyleTransform] 상태:', res.status);
         let processedUrl = '';
         let fallbackFlag = false;
-        let serverEmotion = '';
+        let serverScene = '';
         if (res.ok) {
           const data = await res.json();
           processedUrl = data?.data?.processedUrl;
           if (!processedUrl) throw new Error('processedUrl 누락');
           if (data?.data?.isFallback) fallbackFlag = true;
-          if (data?.data?.emotion) serverEmotion = data.data.emotion;
+          if (data?.data?.sceneAnalysis) serverScene = data.data.sceneAnalysis;
         } else {
           const txt = await res.text();
           console.warn('[useStyleTransform] 실패 응답:', txt);
@@ -59,7 +59,7 @@ export function useStyleTransform({ style, emotion = 'happy' }: UseStyleTransfor
         setTransformedImage(processedUrl);
         setTransformedPhoto(processedUrl);
         setIsFallback(fallbackFlag);
-        if (serverEmotion) setDetectedEmotion(serverEmotion);
+        if (serverScene) setDetectedScene(serverScene);
       } catch (e) {
         console.error('[useStyleTransform] 오류:', e);
         const fb = generateTransformedImageUrl(style);
@@ -74,9 +74,9 @@ export function useStyleTransform({ style, emotion = 'happy' }: UseStyleTransfor
     return () => {
       startedRef.current = false;
     };
-  }, [style, imageId, emotion, setTransformedPhoto]);
+  }, [style, imageId, sceneData, setTransformedPhoto]);
 
   const toggleFilter = () => setApplyFilter(p => !p);
 
-  return { transformedImage, isTransforming, isFallback, applyFilter, toggleFilter, emotion: detectedEmotion };
+  return { transformedImage, isTransforming, isFallback, applyFilter, toggleFilter, sceneAnalysis: detectedScene };
 }

@@ -19,13 +19,16 @@ export const getSocialStyleInfo = (styleId: string) => {
  */
 export const generateTransformedImageUrl = (styleId: string) => {
   const styleImageMap: Record<string, string> = {
-    'ghibli': '/upload/ghibli-style.png',
-    'pixel': '/upload/pixel-art-style.png',
+    'attack_titan': '/upload/attack-on-titan-style.png',
+    'demon_slayer': '/upload/demon-slayer-kimetsu-no-yaiba-style.png',
+    'one_piece': '/upload/one-piece-style.png',
     'picasso': '/upload/picasso-style.png',
-    'pokemon': '/upload/pokemon-style.png',
+    'pixel': '/upload/pixel-art-style.png',
+    'lego': '/upload/lego-style.png',
+    'cyberpunk': '/upload/cyberpunk-style.png',
   };
   
-  return styleImageMap[styleId] || '/upload/ghibli-style.png';
+  return styleImageMap[styleId] || '/upload/attack-on-titan-style.png';
 };
 
 /**
@@ -38,8 +41,8 @@ export const isValidStyleId = (styleId: string): boolean => {
 /**
  * 공유 URL 생성
  */
-export const generateShareUrl = (style: string, emotion: string) => {
-  return `/share?style=${style}&emotion=${emotion}`;
+export const generateShareUrl = (style: string, scene: string) => {
+  return `/share?style=${encodeURIComponent(style)}&scene=${encodeURIComponent(scene)}`;
 };
 
 /**

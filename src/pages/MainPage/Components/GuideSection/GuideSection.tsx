@@ -12,8 +12,8 @@ export default function GuideSection() {
         </div>
         <div className={css.step}>
           <div className={css.stepNumber}>2</div>
-          <h3>감정 분석</h3>
-          <p>AI가 반려동물의 감정을 자동으로 분석합니다</p>
+          <h3>장면 분석</h3>
+          <p>AI가 반려동물의 포즈와 배경을 자동으로 분석합니다</p>
         </div>
         <div className={css.step}>
           <div className={css.stepNumber}>3</div>

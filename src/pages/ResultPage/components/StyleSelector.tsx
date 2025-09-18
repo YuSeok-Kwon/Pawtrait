@@ -38,10 +38,13 @@ export default function StyleSelector({
                                 <Button
                                     key={index}
                                     onClick={() => onStyleSelect(style.id)}
-                                    theme={style.id === 'ghibli' ? 'ghibli' :
-                                        style.id === 'pokemon' ? 'pokemon' :
-                                            style.id === 'pixel' ? 'pixel' :
-                                                style.id === 'picasso' ? 'picasso' : 'beige'}
+                                    theme={style.id === 'attack_titan' ? 'attack_titan' :
+                                        style.id === 'demon_slayer' ? 'demon_slayer' :
+                                            style.id === 'one_piece' ? 'one_piece' :
+                                                style.id === 'picasso' ? 'picasso' :
+                                                    style.id === 'pixel' ? 'pixel' :
+                                                        style.id === 'lego' ? 'lego' :
+                                                            style.id === 'cyberpunk' ? 'cyberpunk' : 'beige'}
                                     size="medium"
                                     imageSrc={style.imageSrc}
                                     imageAlt={`${style.name} 스타일 미리보기`}
@@ -55,10 +58,13 @@ export default function StyleSelector({
                     {selectedStyle && isValidStyleId(selectedStyle) && (
                         <div className={css.transformButton}>
                             <Button
-                                theme={selectedStyle === 'ghibli' ? 'ghibli' :
-                                    selectedStyle === 'pokemon' ? 'pokemon' :
-                                        selectedStyle === 'pixel' ? 'pixel' :
-                                            selectedStyle === 'picasso' ? 'picasso' : 'beige'}
+                                theme={selectedStyle === 'attack_titan' ? 'attack_titan' :
+                                    selectedStyle === 'demon_slayer' ? 'demon_slayer' :
+                                        selectedStyle === 'one_piece' ? 'one_piece' :
+                                            selectedStyle === 'picasso' ? 'picasso' :
+                                                selectedStyle === 'pixel' ? 'pixel' :
+                                                    selectedStyle === 'lego' ? 'lego' :
+                                                        selectedStyle === 'cyberpunk' ? 'cyberpunk' : 'beige'}
                                 size="large"
                                 onClick={onTransform}
                             >

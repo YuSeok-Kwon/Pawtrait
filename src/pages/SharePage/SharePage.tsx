@@ -1,143 +1,181 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Button from '../../components/Button';
-import css from './SharePage.module.css';
-import { PLACEHOLDER_IMAGES } from '../../constants';
+import ImageComparison from '../../components/ImageComparison';
+import { getSceneInfo, getStyleInfo } from '../../utils';
 import { useUrlParams } from '../../hooks/useUrlParams';
-import { getSocialStyleInfo, getEmotionInfo } from '../../utils';
+import { useImage } from '../../contexts/ImageContext';
+import css from './SharePage.module.css';
 
-export default function SharePage() {
+const SharePage: React.FC = () => {
   const navigate = useNavigate();
-  const { getStyleParam, getEmotionParam } = useUrlParams();
-  const [copied, setCopied] = useState(false);
+  const { transformedPhoto, currentPhoto } = useImage();
+  const { getStyleParam, getSceneParam } = useUrlParams();
 
-  // URL 파라미터에서 스타일과 이미지 정보 가져오기
+  const [isSharing, setIsSharing] = useState(false);
+
   const style = getStyleParam();
-  const emotion = getEmotionParam();
+  const scene = getSceneParam();
+  const currentStyle = getStyleInfo(style);
+  const currentScene = getSceneInfo(scene);
 
-  const currentStyle = getSocialStyleInfo(style);
-  const currentEmotion = getEmotionInfo(emotion);
+  const shareData = {
+    title: 'Pawtrait - AI 반려동물 포트레이트',
+    text: `AI가 분석한 우리 아이의 ${currentScene.name} 장면을 ${currentStyle.name} 스타일로 변환했어요!`,
+    url: window.location.href,
+  };
 
-  // 현재 URL 복사하기
-  const copyToClipboard = async () => {
+  const handleSocialShare = async (platform: 'facebook' | 'twitter' | 'instagram' | 'kakao') => {
+    setIsSharing(true);
+
     try {
-      await navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('클립보드 복사 실패:', err);
+      const shareUrl = window.location.href;
+      const shareText = shareData.text;
+
+      switch (platform) {
+        case 'facebook':
+          window.open(
+            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+            '_blank'
+          );
+          break;
+        case 'twitter':
+          window.open(
+            `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
+            '_blank'
+          );
+          break;
+        case 'instagram':
+          // Instagram은 직접 공유가 어려워서 이미지 다운로드 안내
+          alert('Instagram 공유를 위해 이미지를 저장한 후 Instagram 앱에서 업로드해주세요.');
+          break;
+        case 'kakao':
+          // KakaoTalk 공유 (실제 구현시 Kakao SDK 필요)
+          alert('카카오톡 공유 기능은 준비 중입니다.');
+          break;
+      }
+    } catch (error) {
+      console.error('공유 중 오류 발생:', error);
+      alert('공유 중 오류가 발생했습니다.');
+    } finally {
+      setIsSharing(false);
     }
   };
 
-  // 소셜 미디어 공유 링크
-  const shareLinks = {
-    x: `https://x.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent('우리 반려동물의 AI 초상화를 확인해보세요!')}`,
-    instagram: `https://www.instagram.com/`,
+  const handleDownload = () => {
+    if (transformedPhoto) {
+      const link = document.createElement('a');
+      link.href = transformedPhoto;
+      link.download = `pawtrait-${style}-${Date.now()}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const handleNewTransform = () => {
+    navigate('/upload');
   };
 
   return (
-    <div className={css.sharePage}>
-      <div className={css.container}>
-        <h1 className={css.title}>작품 공유하기</h1>
+    <div className={css.container}>
+      <div className={css.content}>
+        <header className={css.header}>
+          <h1 className={css.title}>공유하기</h1>
+          <p className={css.subtitle}>
+            멋진 작품을 친구들과 공유해보세요!
+          </p>
+        </header>
 
-        <div className={css.artworkCard}>
-          <div className={css.imageSection}>
-            <img
-              src={PLACEHOLDER_IMAGES.AI_PORTRAIT}
-              alt={`${currentStyle.name} 스타일 초상화`}
-              className={css.artworkImage}
-            />
-          </div>
+        <div className={css.imageSection}>
+          <ImageComparison
+            beforeImage={currentPhoto || ''}
+            afterImage={transformedPhoto || ''}
+            beforeLabel="원본"
+            afterLabel="변환된 작품"
+          />
 
-          <div className={css.infoSection}>
-            <div
-              className={css.styleTag}
-              style={{ backgroundColor: currentStyle.color }}
-            >
-              {currentStyle.name} 스타일
+          <div className={css.resultInfo}>
+            <div className={css.infoItem}>
+              <span className={css.sceneIcon}>{currentScene.icon}</span>
+              <div className={css.infoText}>
+                장면: {currentScene.name}
+              </div>
             </div>
-
-            <div className={css.emotionInfo}>
-              <span className={css.emotionIcon}>{currentEmotion.icon}</span>
-              <span className={css.emotionText}>
-                감정: {currentEmotion.name}
-              </span>
+            <div className={css.infoItem}>
+              <span className={css.styleIcon}>🎨</span>
+              <div className={css.infoText}>
+                스타일: {currentStyle.name}
+              </div>
             </div>
-
-            <p className={css.description}>
-              AI가 분석한 반려동물의 감정을 바탕으로 {currentStyle.name}{' '}
-              스타일의 초상화를 생성했습니다.
-            </p>
           </div>
         </div>
 
-        <div className={css.shareSection}>
-          <h2 className={css.shareTitle}>공유하기</h2>
-
-          <div className={css.urlShare}>
-            <div className={css.urlContainer}>
-              <input
-                type='text'
-                value={window.location.href}
-                readOnly
-                className={css.urlInput}
-              />
-              <Button
-                onClick={copyToClipboard}
-                theme="white"
-                bordered
-                size="small"
-                className={copied ? css.copied : ''}
-              >
-                {copied ? '복사됨!' : '복사'}
-              </Button>
-            </div>
-          </div>
-
-          <div className={css.socialShare}>
-            <h3 className={css.socialTitle}>소셜 미디어에 공유</h3>
+        <div className={css.actionsSection}>
+          <div className={css.shareButtons}>
+            <h3 className={css.sectionTitle}>소셜 미디어 공유</h3>
             <div className={css.socialButtons}>
-              <Button
-                href={shareLinks.x}
-                target='_blank'
-                theme='x-social'
-                size='medium'
-                iconSrc='logo/X-logo.svg'
-                iconAlt='X 로고'
+              <button
+                className={css.socialButton}
+                onClick={() => handleSocialShare('facebook')}
+                disabled={isSharing}
               >
+                <img src="/logo/facebook-logo.png" alt="Facebook" />
+                Facebook
+              </button>
+
+              <button
+                className={css.socialButton}
+                onClick={() => handleSocialShare('twitter')}
+                disabled={isSharing}
+              >
+                <img src="/logo/X-logo.svg" alt="Twitter" />
                 Twitter
-              </Button>
-              <Button
-                href={shareLinks.instagram}
-                target='_blank'
-                theme='instagram-social'
-                size='medium'
-                iconSrc='logo/Instagram-logo.svg'
-                iconAlt='Instagram 로고'
+              </button>
+
+              <button
+                className={css.socialButton}
+                onClick={() => handleSocialShare('instagram')}
+                disabled={isSharing}
               >
+                <img src="/logo/Instagram-logo.svg" alt="Instagram" />
                 Instagram
-              </Button>
+              </button>
+
+              <button
+                className={css.socialButton}
+                onClick={() => handleSocialShare('kakao')}
+                disabled={isSharing}
+              >
+                <img src="/logo/KakaoTalk-logo.svg" alt="KakaoTalk" />
+                KakaoTalk
+              </button>
             </div>
           </div>
-        </div>
 
-        <div className={css.actionButtons}>
-          <Button
-            onClick={() => navigate('/result')}
-            theme="white"
-            bordered
-            size="medium"
-          >
-            결과로 돌아가기
-          </Button>
-          <Button onClick={() => navigate('/upload')} theme="beige" size="medium">
-            새 작품 만들기
-          </Button>
-          <Button onClick={() => navigate('/')} theme="white" bordered size="medium">
-            홈으로
-          </Button>
+          <div className={css.downloadSection}>
+            <h3 className={css.sectionTitle}>이미지 저장</h3>
+            <Button
+              onClick={handleDownload}
+              size="large"
+              disabled={!transformedPhoto}
+            >
+              이미지 다운로드
+            </Button>
+          </div>
+
+          <div className={css.navigationSection}>
+            <Button
+              onClick={handleNewTransform}
+              size="large"
+            >
+              새로운 작품 만들기
+            </Button>
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default SharePage;

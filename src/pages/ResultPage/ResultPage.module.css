@@ -120,12 +120,12 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.emotionResult {
+.sceneResult {
   display: flex;
   justify-content: center;
 }
 
-.emotionCard {
+.sceneCard {
   text-align: center;
   padding: 30px;
   border-radius: 15px;
@@ -135,24 +135,24 @@
   /* 배경색은 인라인 스타일로 동적 적용 */
 }
 
-.emotionIcon {
+.sceneIcon {
   font-size: 60px;
   margin-bottom: 15px;
 }
 
-.emotionName {
+.sceneName {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.emotionScore {
+.sceneConfidence {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
-.emotionDescription {
+.sceneDescription {
   font-size: 16px;
   line-height: 1.5;
   opacity: 0.9;

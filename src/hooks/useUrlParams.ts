@@ -20,8 +20,8 @@ export const useUrlParams = () => {
     return getParam('style', DEFAULT_STYLE);
   };
 
-  const getEmotionParam = (): string => {
-    return getParam('emotion', 'happy');
+  const getSceneParam = (): string => {
+    return getParam('scene', 'sitting');
   };
 
   const getAllParams = () => {
@@ -35,7 +35,7 @@ export const useUrlParams = () => {
   return {
     getParam,
     getStyleParam,
-    getEmotionParam,
+    getSceneParam,
     getAllParams,
     searchParams,
   };

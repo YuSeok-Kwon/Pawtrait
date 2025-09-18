@@ -176,7 +176,7 @@ function UploadPage() {
           <div className={css.buttons}>
             <Button onClick={() => navigate('/')} theme="white" bordered disabled={isUploading}>이전으로</Button>
             <Button onClick={handleUpload} theme="beige" disabled={!selectedFile || isUploading}>
-              {isUploading ? <>업로드 중<span className={css.spinner}></span></> : '감정 분석 시작'}
+              {isUploading ? <>업로드 중<span className={css.spinner}></span></> : '장면 분석 시작'}
             </Button>
           </div>
           {error && <p style={{ color: 'red', marginTop: 12 }}>{error}</p>}

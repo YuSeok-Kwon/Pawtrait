@@ -18,7 +18,7 @@ export default function TransformPage() {
   const [showAnimation, setShowAnimation] = useState(true);
   // URL 파라미터에서 선택된 스타일 가져오기 먼저 수행
   const selectedStyle = getStyleParam();
-  const { transformedImage, isTransforming, isFallback, applyFilter, toggleFilter, emotion } = useStyleTransform({ style: selectedStyle });
+  const { transformedImage, isTransforming, isFallback, applyFilter, toggleFilter, sceneAnalysis } = useStyleTransform({ style: selectedStyle });
 
   const currentStyle = getStyleInfo(selectedStyle);
 
@@ -90,9 +90,9 @@ export default function TransformPage() {
         >
           <h2 className={css.styleName}>{currentStyle.name} 스타일</h2>
           <p className={css.styleDescription}>{currentStyle.description}</p>
-          {emotion && (
-            <div className={css.emotionBox} style={{ marginTop: 12 }}>
-              <strong>감정 분석 결과:</strong> <span>{emotion}</span>
+          {sceneAnalysis && (
+            <div className={css.sceneBox} style={{ marginTop: 12 }}>
+              <strong>장면 분석 결과:</strong> <span>{sceneAnalysis}</span>
             </div>
           )}
         </div>
@@ -134,7 +134,7 @@ export default function TransformPage() {
           </Button>
           <Button
             onClick={() =>
-              navigate(generateShareUrl(selectedStyle, emotion || 'unknown'))
+              navigate(generateShareUrl(selectedStyle, sceneAnalysis || 'sitting'))
             }
             theme="white"
             bordered

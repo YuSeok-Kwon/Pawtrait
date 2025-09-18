@@ -19,6 +19,10 @@
 
 .exampleDiv {
   padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 
 .subTitle {
@@ -30,22 +34,33 @@
   padding-top: 15px;
 }
 
-.exampleContent div {
-  display: flex;
-}
+/* exampleDiv에서 이미 flex 설정됨 */
 
 .exampleImg {
-  width: 350px;
-  height: auto;
-  aspect-ratio: 4/3;
-  margin: 0 20px;
+  width: 280px;
+  height: 280px;
+  aspect-ratio: 1/1;
+  margin: 0 15px;
   border: 2px solid #ddd;
   border-radius: 10px;
-  object-fit: fill;
+  object-fit: cover;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
 .exampleImg:hover {
   transform: translateY(-5px);
+}
+
+/* 모바일 반응형 처리 */
+@media (max-width: 768px) {
+  .exampleImg {
+    width: 150px;
+    height: 150px;
+    margin: 0 5px;
+  }
+  
+  .exampleDiv {
+    max-width: 340px;
+  }
 }

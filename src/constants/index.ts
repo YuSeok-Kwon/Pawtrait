@@ -1,5 +1,5 @@
 // 상수들을 한 곳에서 export
-export * from './emotions';
+export * from './scenes';
 export * from './styles';
 
 // 기타 앱 전반에서 사용하는 상수들
@@ -24,8 +24,8 @@ export const PLACEHOLDER_IMAGES = {
   ORIGINAL: '/upload/main-image.png',
   AI_PORTRAIT: '/upload/main-image.png', // 로컬 이미지로 변경
   UPLOADED_PHOTO: '/upload/main-image.png', // 로컬 이미지로 변경
-  PROCESSING_1: '/upload/emotion-analysis.png',
-  PROCESSING_2: '/upload/emotion-analysis.png', // 로컬 이미지로 변경
+  PROCESSING_1: '/upload/scene-analysis.png',
+  PROCESSING_2: '/upload/scene-analysis.png', // 로컬 이미지로 변경
 } as const;
 
 // 애니메이션 단계별 설정
@@ -36,11 +36,11 @@ export const ANIMATION_STAGES = {
     duration: 1000,
     description: '업로드된 반려동물 사진'
   },
-  EMOTION_ANALYSIS: {
+  SCENE_ANALYSIS: {
     name: 'processing1' as const,
-    label: '감정 분석 중',
+    label: '장면 분석 중',
     duration: 2000,
-    description: 'AI가 반려동물의 감정을 분석하고 있습니다'
+    description: 'AI가 반려동물의 포즈와 배경을 분석하고 있습니다'
   },
   STYLE_PROCESSING: {
     name: 'processing2' as const,

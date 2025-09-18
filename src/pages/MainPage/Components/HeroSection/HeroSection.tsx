@@ -25,7 +25,7 @@ export default function HeroSection() {
         className={css.heroImage}
       />
       <div className={css.heroContent}>
-        <h1 className={css.heroTitle}>사랑하는 반려동물의 마음을 읽어주세요</h1>
+        <h1 className={css.heroTitle}>사진이 이야기가 되는 반려동물 초상화</h1>
         <p className={css.heroText}>
           한 장의 사진 속에 담긴 깊은 감정과 소중한 추억을
           <br /> 아름다운 작품으로 간직하세요

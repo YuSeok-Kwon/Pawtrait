@@ -5,10 +5,13 @@ import styles from "./Button.module.css";
 export type ButtonTheme =
     | 'beige'              // 기본 메인 액션 버튼
     | 'white'              // 보조 액션 버튼
-    | 'ghibli'             // 지브리 스타일 변환용
-    | 'pokemon'            // 포켓몬 스타일 변환용  
-    | 'pixel'              // 픽셀아트 스타일 변환용
+    | 'attack_titan'       // 진격의 거인 스타일 변환용
+    | 'demon_slayer'       // 귀멸의 칼날 스타일 변환용
+    | 'one_piece'          // 원피스 스타일 변환용
     | 'picasso'            // 피카소 스타일 변환용
+    | 'pixel'              // 픽셀아트 스타일 변환용
+    | 'lego'               // 레고 스타일 변환용
+    | 'cyberpunk'          // 사이버펑크 스타일 변환용
     | 'x-social'           // X(트위터) 공유용
     | 'instagram-social';  // 인스타그램 공유용
 export type ButtonSize = 'small' | 'medium' | 'large' | 'gnb';

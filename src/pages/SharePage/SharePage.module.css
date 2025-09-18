@@ -62,18 +62,18 @@
   margin-bottom: 20px;
 }
 
-.emotionInfo {
+.sceneInfo {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-.emotionIcon {
+.sceneIcon {
   font-size: 24px;
 }
 
-.emotionText {
+.sceneText {
   font-size: 18px;
   font-weight: 500;
   color: #555;

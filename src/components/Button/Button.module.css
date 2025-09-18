@@ -75,37 +75,37 @@
 }
 
 /* ==== 스타일 변환용 테마들 ==== */
-/* 지브리 스타일 (초록 계열) - 자연스러운 애니메이션 느낌 */
-.button.ghibli {
-    background-color: #4CAF50;
+/* 진격의 거인 스타일 (갈색 계열) - 극적이고 강렬한 느낌 */
+.button.attack_titan {
+    background-color: #5D4037;
     color: white;
-    border-color: #4CAF50;
+    border-color: #5D4037;
 }
 
-.button.ghibli:hover {
-    background-color: #388E3C;
+.button.attack_titan:hover {
+    background-color: #4E342E;
 }
 
-/* 포켓몬 스타일 (파랑 계열) - 게임 캐릭터 느낌 */
-.button.pokemon {
-    background-color: #1976D2;
+/* 귀멸의 칼날 스타일 (핑크/빨강 계열) - 아름답고 역동적인 느낌 */
+.button.demon_slayer {
+    background-color: #AD1457;
     color: white;
-    border-color: #1976D2;
+    border-color: #AD1457;
 }
 
-.button.pokemon:hover {
-    background-color: #1565C0;
+.button.demon_slayer:hover {
+    background-color: #880E4F;
 }
 
-/* 픽셀아트 스타일 (주황 계열) - 8비트 게임 느낌 */
-.button.pixel {
-    background-color: #F4511E;
+/* 원피스 스타일 (오렌지 계열) - 밝고 모험적인 느낌 */
+.button.one_piece {
+    background-color: #F57C00;
     color: white;
-    border-color: #F4511E;
+    border-color: #F57C00;
 }
 
-.button.pixel:hover {
-    background-color: #E64A19;
+.button.one_piece:hover {
+    background-color: #EF6C00;
 }
 
 /* 피카소 스타일 (보라 계열) - 추상적 아트 느낌 */
@@ -117,6 +117,39 @@
 
 .button.picasso:hover {
     background-color: #5E35B1;
+}
+
+/* 픽셀아트 스타일 (초록 계열) - 8비트 게임 느낌 */
+.button.pixel {
+    background-color: #388E3C;
+    color: white;
+    border-color: #388E3C;
+}
+
+.button.pixel:hover {
+    background-color: #2E7D32;
+}
+
+/* 레고 스타일 (파랑 계열) - 장난감 같고 귀여운 느낌 */
+.button.lego {
+    background-color: #1976D2;
+    color: white;
+    border-color: #1976D2;
+}
+
+.button.lego:hover {
+    background-color: #1565C0;
+}
+
+/* 사이버펑크 스타일 (네온핑크/보라 계열) - 미래적이고 네온 가득한 느낌 */
+.button.cyberpunk {
+    background-color: #9C27B0;
+    color: white;
+    border-color: #9C27B0;
+}
+
+.button.cyberpunk:hover {
+    background-color: #7B1FA2;
 }
 
 /* ==== 소셜 공유용 테마들 ==== */
