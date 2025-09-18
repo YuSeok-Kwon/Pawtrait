@@ -88,7 +88,35 @@
 .imageBox img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+/* 블렌딩 컨테이너 */
+.blendingContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.originalImage,
+.transformedImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s ease-in-out;
+  filter: blur(0px);
+}
+
+/* 블렌딩 중일 때 약간의 효과 추가 */
+.blendingContainer .originalImage {
+  transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.blendingContainer .transformedImage {
+  transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
 /* 간단한 로딩 (주니어 개발자 수준) */

@@ -1,6 +1,7 @@
 // 유틸리티 함수들을 한 곳에서 export
 export * from './styleUtils';
 export * from './emotionUtils';
+export * from './downloadImage';
 
 // 공통으로 사용되는 유틸리티 함수들
 export const formatFileSize = (bytes: number): string => {

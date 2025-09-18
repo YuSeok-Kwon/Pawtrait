@@ -22,10 +22,10 @@ export const ROUTES = {
 // 플레이스홀더 이미지 URL
 export const PLACEHOLDER_IMAGES = {
   ORIGINAL: '/upload/main-image.png',
-  AI_PORTRAIT: 'https://via.placeholder.com/400x400/e8e8e8/666?text=AI+Portrait',
-  UPLOADED_PHOTO: 'https://via.placeholder.com/400x300/f5f5f5/999?text=Uploaded+Photo',
+  AI_PORTRAIT: '/upload/main-image.png', // 로컬 이미지로 변경
+  UPLOADED_PHOTO: '/upload/main-image.png', // 로컬 이미지로 변경
   PROCESSING_1: '/upload/emotion-analysis.png',
-  PROCESSING_2: 'https://via.placeholder.com/400x400/d4c3a3/888?text=스타일+변환중...',
+  PROCESSING_2: '/upload/emotion-analysis.png', // 로컬 이미지로 변경
 } as const;
 
 // 애니메이션 단계별 설정

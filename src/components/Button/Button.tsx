@@ -22,9 +22,16 @@ interface ButtonProps {
     children: React.ReactNode;
     onClick?: () => void; // 간소화된 onClick
     className?: string;
+    type?: 'button' | 'submit' | 'reset';
+    href?: string;
+    target?: string;
+    rel?: string;
     // 스타일 선택 버튼용 이미지 (선택사항)
     imageSrc?: string;     // 이미지 경로
     imageAlt?: string;     // 이미지 설명
+    // 소셜 공유 아이콘 alias
+    iconSrc?: string;
+    iconAlt?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -37,6 +44,12 @@ const Button: React.FC<ButtonProps> = ({
     onClick,
     imageSrc,
     imageAlt,
+    iconSrc,
+    iconAlt,
+    type = 'button',
+    href,
+    target,
+    rel,
 }) => {
     // 간단한 클래스 조합 (이해하기 쉬운 방식)
     let buttonClasses = `${styles.button} ${styles[theme]} ${styles[size]}`;
@@ -55,17 +68,47 @@ const Button: React.FC<ButtonProps> = ({
         buttonClasses += ` ${className}`;
     }
 
+    const finalImageSrc = imageSrc || iconSrc;
+    const finalImageAlt = imageAlt || iconAlt || '';
+
+    if (href) {
+        return (
+            <a
+                className={buttonClasses}
+                href={href}
+                target={target}
+                rel={rel || (target === '_blank' ? 'noopener noreferrer' : undefined)}
+                onClick={(e) => {
+                    if (disabled) {
+                        e.preventDefault();
+                        return;
+                    }
+                    onClick?.();
+                }}
+            >
+                {finalImageSrc && (
+                    <img
+                        src={finalImageSrc}
+                        alt={finalImageAlt}
+                        className={styles.buttonImage}
+                    />
+                )}
+                {children}
+            </a>
+        );
+    }
+
     return (
         <button
+            type={type}
             className={buttonClasses}
             onClick={onClick}
             disabled={disabled}
         >
-            {/* 이미지가 있으면 이미지 표시 */}
-            {imageSrc && (
+            {finalImageSrc && (
                 <img
-                    src={imageSrc}
-                    alt={imageAlt || ''}
+                    src={finalImageSrc}
+                    alt={finalImageAlt}
                     className={styles.buttonImage}
                 />
             )}

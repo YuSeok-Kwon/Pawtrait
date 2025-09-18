@@ -4,7 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import SocialLoginButton from '@/components/SocialLoginButton';
-import { SocialProvider, startSocialLogin, exchangeCodeForUserInfo } from '@/utils/socialLogin';
+import { SocialProvider } from '@/utils/socialLogin';
 import styles from './LoginPage.module.css';
 
 interface LoginForm {
@@ -101,11 +101,7 @@ const LoginPage: React.FC = () => {
             // const userInfo = await exchangeCodeForUserInfo(provider, code);
 
             // 임시 소셜 로그인 성공 처리
-            const mockUser = {
-                id: `${provider}_123`,
-                name: provider === 'kakao' ? '카카오 사용자' : '구글 사용자',
-                email: `user@${provider}.com`,
-            };
+            // 실제 구현 시 사용자 정보 확보 후 AuthContext 처리 예정
 
             // AuthContext에 소셜 로그인 함수가 있다면 사용
             // await socialLogin(provider, mockUser);

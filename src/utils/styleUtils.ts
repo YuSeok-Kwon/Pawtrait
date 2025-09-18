@@ -17,8 +17,15 @@ export const getSocialStyleInfo = (styleId: string) => {
 /**
  * 스타일에 따른 변환된 이미지 URL 생성
  */
-export const generateTransformedImageUrl = (styleName: string) => {
-  return `https://via.placeholder.com/400x400/e8d5b7/333?text=${styleName}+변환`;
+export const generateTransformedImageUrl = (styleId: string) => {
+  const styleImageMap: Record<string, string> = {
+    'ghibli': '/upload/ghibli-style.png',
+    'pixel': '/upload/pixel-art-style.png',
+    'picasso': '/upload/picasso-style.png',
+    'pokemon': '/upload/pokemon-style.png',
+  };
+  
+  return styleImageMap[styleId] || '/upload/ghibli-style.png';
 };
 
 /**

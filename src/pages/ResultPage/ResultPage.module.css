@@ -49,19 +49,21 @@
 
 .viewToggle {
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .toggleButton {
-  padding: 8px 16px;
+  padding: 8px 12px;
   border: 2px solid #e8d5b7;
   background: white;
   color: #b8a082;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-width: 60px;
 }
 
 .toggleButton:hover {
@@ -77,16 +79,38 @@
 .photoContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  padding: 20px;
 }
 
 .uploadedPhoto {
-  max-width: 400px;
-  max-height: 300px;
-  width: 100%;
+  max-width: 500px;
+  max-height: 400px;
+  width: auto;
   height: auto;
   border-radius: 10px;
-  object-fit: cover;
+  object-fit: contain;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+.loadingSection {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.loadingSection h2 {
+  color: #b8a082;
+  margin-bottom: 10px;
+}
+
+.loadingSection p {
+  color: #666;
+  font-size: 16px;
 }
 
 .analysisSection {
@@ -339,10 +363,12 @@
 
   .viewToggle {
     align-self: stretch;
+    justify-content: center;
   }
 
   .toggleButton {
     flex: 1;
     text-align: center;
+    min-width: 70px;
   }
 }

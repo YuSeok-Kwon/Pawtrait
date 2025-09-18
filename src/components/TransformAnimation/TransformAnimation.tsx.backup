@@ -70,18 +70,101 @@ export default function TransformAnimation({
         if (steps[step].showBlending) {
           let blendValue = 0;
           const blendInterval = setInterval(() => {
-            blendValue += 0.3; // 천천히 블렌딩 (0.3%씩)
+            blendValue += 0.3; // 천천히 블렌딩
             setBlendProgress(blendValue);
 
             if (blendValue >= 100) {
               clearInterval(blendInterval);
+              // 블렌딩 완료 후 다음 단계로
               setTimeout(() => {
                 step++;
                 setBlendProgress(0);
                 runStep();
-              }, 1500); // 더 길게 대기
+              }, 1500); // 더욱 길게 대기
             }
-          }, 150); // 느리게 업데이트 (150ms마다)
+          }, 150); // 더욱 느리게 업데이트 (150ms마다)odule.css';
+
+interface TransformAnimationProps {
+  originalImage: string;
+  transformedImage: string;
+  style: string;
+  onComplete?: () => void; // 애니메이션 완료 시 호출될 함수
+}
+
+export default function TransformAnimation({
+  originalImage,
+  transformedImage,
+  style,
+  onComplete
+}: TransformAnimationProps) {
+  // 간단한 상태들
+  const [currentStep, setCurrentStep] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [blendProgress, setBlendProgress] = useState(0); // 이미지 블렌딩 진행률
+
+  // 단계별 정보 (간단하게)
+  const steps = [
+    {
+      name: '원본 이미지',
+      image: originalImage,
+      showLoading: false,
+      showBlending: false,
+      description: '반려동물의 원본 사진입니다'
+    },
+    {
+      name: '감정 분석 중...',
+      image: originalImage,
+      showLoading: true,
+      showBlending: false,
+      description: 'AI가 반려동물의 감정을 분석하고 있어요'
+    },
+    {
+      name: `${style} 스타일 변환 중...`,
+      image: originalImage,
+      showLoading: true,
+      showBlending: true,
+      description: `${style} 스타일로 변환하고 있어요`
+    },
+    {
+      name: '변환 완료!',
+      image: transformedImage,
+      showLoading: false,
+      showBlending: false,
+      description: '스타일 변환이 완료되었습니다!'
+    }
+  ];  // 애니메이션 시작하기
+  const startAnimation = () => {
+    if (isRunning) return;
+
+    setIsRunning(true);
+    setCurrentStep(0);
+    setProgress(0);
+
+    let step = 0;
+
+    const runStep = () => {
+      if (step < steps.length) {
+        setCurrentStep(step);
+        setProgress((step + 1) / steps.length * 100);
+
+        // 변환 단계에서는 블렌딩 애니메이션 실행
+        if (steps[step].showBlending) {
+          let blendValue = 0;
+          const blendInterval = setInterval(() => {
+            blendValue += 1; // 1%씩 증가
+            setBlendProgress(blendValue);
+
+            if (blendValue >= 100) {
+              clearInterval(blendInterval);
+              // 블렌딩 완료 후 다음 단계로
+              setTimeout(() => {
+                step++;
+                setBlendProgress(0);
+                runStep();
+              }, 1000); // 더 길게 대기
+            }
+          }, 100); // 더 느리게 업데이트 (100ms마다)
         } else {
           // 일반 단계는 2초 후 다음으로
           setTimeout(() => {
@@ -91,6 +174,7 @@ export default function TransformAnimation({
         }
       } else {
         setIsRunning(false);
+        // 애니메이션 완료되면 onComplete 호출
         if (onComplete) {
           onComplete();
         }
@@ -100,7 +184,7 @@ export default function TransformAnimation({
     runStep();
   };
 
-  // 다시 시작
+  // 다시 시작하기
   const restartAnimation = () => {
     setCurrentStep(0);
     setProgress(0);
@@ -108,8 +192,9 @@ export default function TransformAnimation({
     setIsRunning(false);
   };
 
-  // 자동 시작
+  // 컴포넌트가 로드되면 자동으로 애니메이션 시작
   useEffect(() => {
+    // 1초 후에 애니메이션 자동 시작
     const timer = setTimeout(() => {
       startAnimation();
     }, 1000);
@@ -157,7 +242,7 @@ export default function TransformAnimation({
             />
           )}
 
-          {/* 로딩 표시 */}
+          {/* 간단한 로딩 표시 */}
           {isRunning && steps[currentStep].showLoading && (
             <div className={css.simpleLoading}>
               <div className={css.loadingDot}></div>
@@ -176,10 +261,17 @@ export default function TransformAnimation({
 
       {/* 버튼들 */}
       <div className={css.buttons}>
-        <button onClick={startAnimation} disabled={isRunning}>
+        <button
+          onClick={startAnimation}
+          disabled={isRunning}
+        >
           {isRunning ? '변환 중...' : '변환 시작'}
         </button>
-        <button onClick={restartAnimation} disabled={isRunning}>
+
+        <button
+          onClick={restartAnimation}
+          disabled={isRunning}
+        >
           처음부터
         </button>
       </div>

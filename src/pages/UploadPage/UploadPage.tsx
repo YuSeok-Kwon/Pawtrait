@@ -6,13 +6,23 @@ import { useImage } from '../../contexts/ImageContext';
 
 function UploadPage() {
   const navigate = useNavigate();
-  const { setCurrentPhoto } = useImage();
+  const { setCurrentPhoto, setImageId, clearPhoto } = useImage();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>('');
+  const [isUploading, setIsUploading] = useState(false);
+  const [error, setError] = useState<string>('');
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
+
+    // 허용 타입 검사 (png / jpeg)
+    const allowed = ['image/png', 'image/jpeg'];
+    if (!allowed.includes(file.type)) {
+      setError('PNG 또는 JPG 형식의 이미지만 업로드 가능합니다.');
+      event.target.value = '';
+      return;
+    }
 
     // 파일 크기 체크 (10MB 제한)
     const maxSize = 10 * 1024 * 1024; // 10MB
@@ -22,6 +32,7 @@ function UploadPage() {
     }
 
     setSelectedFile(file);
+    setError('');
 
     // 선택한 파일을 미리보기로 보여주기 위해 URL로 변환합니다.
     // FileReader는 파일을 비동기적으로 읽는 객체입니다.
@@ -72,15 +83,43 @@ function UploadPage() {
   const handleClearSelection = () => {
     setSelectedFile(null);
     setPreviewUrl('');
-    setCurrentPhoto('');
+    clearPhoto();
+    setError('');
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (!selectedFile) {
       alert('먼저 이미지를 선택해주세요.');
       return;
     }
-    navigate('/result');
+    setIsUploading(true);
+    setError('');
+    try {
+      const formData = new FormData();
+      formData.append('image', selectedFile);
+      const response = await fetch('/api/images/upload', {
+        method: 'POST',
+        body: formData
+      });
+      if (!response.ok) {
+        const txt = await response.text();
+        throw new Error('업로드 실패: ' + txt);
+      }
+      const result = await response.json();
+      const uploaded = result.data;
+      if (uploaded?.originalUrl) {
+        setCurrentPhoto(uploaded.originalUrl); // 서버 경로 사용
+      }
+      if (uploaded?.id) {
+        setImageId(uploaded.id);
+      }
+      navigate('/result');
+    } catch (e: any) {
+      console.error('업로드 실패', e);
+      setError(e.message || '업로드 중 오류가 발생했습니다');
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   return (
@@ -135,11 +174,12 @@ function UploadPage() {
           </div>
 
           <div className={css.buttons}>
-            <Button onClick={() => navigate('/')} theme="white" bordered>이전으로</Button>
-            <Button onClick={handleUpload} theme="beige" disabled={!selectedFile}>
-              감정 분석 시작
+            <Button onClick={() => navigate('/')} theme="white" bordered disabled={isUploading}>이전으로</Button>
+            <Button onClick={handleUpload} theme="beige" disabled={!selectedFile || isUploading}>
+              {isUploading ? <>업로드 중<span className={css.spinner}></span></> : '감정 분석 시작'}
             </Button>
           </div>
+          {error && <p style={{ color: 'red', marginTop: 12 }}>{error}</p>}
         </div>
       </div>
     </>
